@@ -1,7 +1,9 @@
 from django.db import models
+
 from login_register_app.models import User
 
-#TODO Fix imports
+
+# TODO Fix imports
 
 class Category(models.Model):
     name = models.CharField(max_length=45)
@@ -44,12 +46,13 @@ class Order(models.Model):
     note = models.TextField()
     grand_total = models.FloatField()
     user = models.ForeignKey(User, related_name="orders", on_delete=models.CASCADE)
-    location = models.OneToOneField(Location, related_name="order",on_delete=models.CASCADE, primary_key=True)
+    location = models.OneToOneField(Location, related_name="order", on_delete=models.CASCADE, primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
 class Cart(models.Model):
-    dish=models.ManyToManyField(Dish,related_name="carts")
-    user=models.OneToOneField(User,related_name="cart",on_delete=models.CASCADE,primary_key=True)
+    dish = models.ManyToManyField(Dish, related_name="carts")
+    user = models.OneToOneField(User, related_name="cart", on_delete=models.CASCADE, primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
