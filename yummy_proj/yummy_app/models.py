@@ -26,7 +26,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=45)
     description = models.CharField(max_length=255)
     price = models.FloatField()
-    category = models.ForeignKey(Category, related_name="dishes", on_delete=models.CASCADED)
+    category = models.ForeignKey(Category, related_name="dishes", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -50,5 +50,6 @@ class Order(models.Model):
 
 class Cart(models.Model):
     dish=models.ManyToManyField(Dish,related_name="carts")
+    user=models.OneToOneField(User,related_name="cart",on_delete=models.CASCADE,primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
