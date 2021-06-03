@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-$%h5!8v9^t-z&89-@5i=ltc*q3os!4r=5m)#d@d0c)d(+(5*a-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+import os
 ALLOWED_HOSTS = []
 
 
@@ -78,7 +78,8 @@ WSGI_APPLICATION = 'yummy_proj.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
     }
 }
 
