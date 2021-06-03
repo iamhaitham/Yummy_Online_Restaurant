@@ -28,7 +28,7 @@ section .circle {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ee6f57;
+    background: #ee6f57;  /* Colors HERE-------------------------  */
     clip-path: circle(70% at right -20%);
 }
 

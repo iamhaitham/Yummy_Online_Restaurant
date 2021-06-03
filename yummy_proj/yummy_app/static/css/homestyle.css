@@ -15,7 +15,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #161616;
+    background: #070d59; /* Colors HERE-------------------------  */
 }
 
 section .circle {
@@ -25,7 +25,7 @@ section .circle {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #9bdead;
+    background: #ee6f57;  /* Colors HERE-------------------------  */
     clip-path: circle(70% at right -20%);
 }
 
@@ -233,7 +233,7 @@ header .navigation li a {
         position: relative;
         width: 30px;
         height: 30px;
-        background: url(images/menu.png);
+        background: url('../img/categories/menu.png');
         background-size: 30px;
         background-repeat: no-repeat;
         background-position: center;
@@ -244,7 +244,7 @@ header .navigation li a {
     .toggle.active {
         position: fixed;
         right: 40px;
-        background: url(images/close.png);
+        background: url(../img/categories/close.png);
         background-size: 25px;
         background-repeat: no-repeat;
         background-position: center;

@@ -4,8 +4,9 @@ from . import models
 
 # Create your views here.
 
-def root(request):
-    return  HttpResponse("This is a placeholder for root")
+def home(request):
+    return render(request, "home.html")
+
 
 def category(request,category):
     context={
