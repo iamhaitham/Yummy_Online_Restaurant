@@ -36,7 +36,7 @@
                 <img src="{% static 'img/categories/burger.png' %}" class="itemPicture">
                 <h3 class="itemTitle">{{dish.name}}</h3>
                 <p class="itemDescription">{{dish.description}}</p>
-                <h6 class="itemPrice">${{dish.price}}</h6>
+                <h6 class="itemPrice">₪{{dish.price}}</h6>
                 <button class="buy-1">Add to cart</button>
             </div>
             {% endfor %}
