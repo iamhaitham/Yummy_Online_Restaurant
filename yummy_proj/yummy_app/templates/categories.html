@@ -32,15 +32,11 @@
             <div class="content">
                 {% for dish in All_Dishes %}
                 <div class="item">
-                    <img src="{{dish.image}}" class="itemPicture">
+                    <img src="burger.png" class="itemPicture">
                     <h3 class="itemTitle">{{dish.name}}</h3>
                     <p class="itemDescription">{{dish.description}}</p>
                     <h6 class="itemPrice">${{dish.price}}</h6>
-                    <form action="addToCart/{{dish.category.name}}" method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="dishToAdd" value="{{dish.id}}">
-                        <button class="buy-1">Add to cart</button>
-                    </form>
+                    <button class="buy-1">Add to cart</button>
                 </div>
                 {% endfor %}
 
