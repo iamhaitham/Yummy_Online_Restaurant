@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Yummy Home Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homestyle.css' %}"/>
+
+</head>
+
+<body>
+
+<section>
+    <div class="circle"></div>
+    <header>
+        <a href="/yummy"> <img src="{% static 'img/categories/logo.png' %}" class="logo"></a>
+        <div class="toggle" onclick="toggleMenu()">
+
+        </div>
+        <ul class="navigation">
+            <li><a href="/yummy">Home</a></li>
+            <li><a href="#">Food Categories</a></li>
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </header>
+
+    <div class="content">
+
+        <div class="textBox">
+            <h2>From The Kitchen to Your Door</h2>
+            <p>We offer breakfast and lunch made to order all day and are focused on providing quality service and fresh
+                food, with a smile. We are a small staff and regulars become family. We’d love to get to know you
+                better! See you soon, at the shop!</p>
+            <a href="#">Learn More</a>
+        </div>
+
+        <div class="imgBox">
+            <div class="swiper-container mySwiper swiper-container-coverflow swiper-container-3d swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events"
+                 style="cursor: grab;">
+                <div class="swiper-wrapper" id="swiper-wrapper-1a286acdc88af937" aria-live="polite"
+                     style="transition-duration: 0ms; transform: translate3d(-871px, 0px, 0px);">
+                    <div class="swiper-slide" role="group" aria-label="1 / 6"
+                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, -400px) rotateX(0deg) rotateY(200deg) scale(1); z-index: -3;">
+                        <a href="Fast Food"><img src="{% static 'img/homepage/fastfood.png' %}"></a>
+                        <div class="swiper-slide-shadow-left" style="opacity: 4; transition-duration: 0ms;"></div>
+                        <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
+                    </div>
+                    <div class="swiper-slide" role="group" aria-label="2 / 6"
+                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(150deg) scale(1); z-index: -2;">
+                        <a href="Salads"><img src="{% static 'img/homepage/salad.png' %}"></a>
+
+                        <div class="swiper-slide-shadow-left" style="opacity: 3; transition-duration: 0ms;"></div>
+                        <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
+                    </div>
+                    <div class="swiper-slide" role="group" aria-label="3 / 6"
+                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, -200px) rotateX(0deg) rotateY(100deg) scale(1); z-index: -1;">
+                        <a href="Drinks"><img src="{% static 'img/homepage/cocacola3.png' %}"></a>
+                        <div class="swiper-slide-shadow-left" style="opacity: 2; transition-duration: 0ms;"></div>
+                        <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
+                    </div>
+
+                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="4 / 6"
+                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1); z-index: 1;">
+                        <a href="Desserts"><img src="{% static 'img/homepage/desserts.png' %}"></a>
+                        <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div>
+                        <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
+                    </div>
+                    <div class="swiper-slide swiper-slide-prev" role="group" aria-label="5 / 6"
+                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, -100px) rotateX(0deg) rotateY(50deg) scale(1); z-index: 0;">
+                        <a href="Traditional"><img src="{% static 'img/homepage/traditional.png' %}"></a>
+                        <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div>
+                        <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
+                    </div>
+                    <div class="swiper-slide swiper-slide-next" role="group" aria-label="6 / 6"
+                         style="transition-duration: 0ms; transform: translate3d(0px, 0px, -100px) rotateX(0deg) rotateY(-50deg) scale(1); z-index: -0;">
+                        <a href="Pastries"><img src="{% static 'img/homepage/pastries.png' %}"></a>
+                        <!--                        <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div>-->
+                        <!--                        <div class="swiper-slide-shadow-right" style="opacity: 1; transition-duration: 0ms;"></div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="sci">
+        <ul class="sci">
+            <li>
+                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+            </li>
+        </ul>
+    </ul>
+
+</section>
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        effect: "coverflow",
+        grabCursor: true,
+        spaceBetween: 25,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+            rotate: 0,
+            stretch: -10,
+            depth: 300,
+            modifier: 1,
+            slideShadows: false,
+        }, mousewheel: {
+            invert: true,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        loop: true,
+    });
+
+    function toggleMenu() {
+        const menuToggle = document.querySelector('.toggle');
+        const navigation = document.querySelector('.navigation');
+        menuToggle.classList.toggle('active');
+        navigation.classList.toggle('active')
+    }
+
+</script>
+</body>
+</html>
