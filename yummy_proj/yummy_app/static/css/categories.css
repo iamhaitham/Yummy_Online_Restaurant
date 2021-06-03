@@ -44,7 +44,9 @@ header .logo {
 }
 
 header .navigation {
-    position: relative;
+    position: absolute;
+    left: 750px;
+    z-index: 160;
     display: flex;
 }
 
@@ -55,7 +57,7 @@ header .navigation li {
 header .navigation li a {
     text-decoration: none;
     display: inline-block;
-    color: #ee6f57;
+    color: white;
     font-weight: 500;
     margin-left: 40px;
 }
