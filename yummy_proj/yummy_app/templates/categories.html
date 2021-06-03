@@ -2,74 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>{{categoryName}}</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <meta charset="UTF-8"/>
+    <title>Categories</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
     <!-- Load static -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/Categories.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/Categories.css' %}"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
-    <section>
-        <div class="circle"></div>
-        <header>
-            <a href="#"> <img src="{% static 'img/logo.png' %}" class="logo" /></a>
-            <div class="toggle" onclick="toggleMenu()"></div>
-            <ul class="navigation">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Food Categories</a></li>
-                <li><a href="#">Orders</a></li>
-                <li><a href="#">Contacts</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </header>
+<section>
+    <div class="circle"></div>
 
-        <div class="itemsInColumn">
-            <div class="content">
-                {% for dish in All_Dishes %}
-                <div class="item">
-                    <img src="burger.png" class="itemPicture">
-                    <h3 class="itemTitle">{{dish.name}}</h3>
-                    <p class="itemDescription">{{dish.description}}</p>
-                    <h6 class="itemPrice">${{dish.price}}</h6>
-                    <button class="buy-1">Add to cart</button>
-                </div>
-                {% endfor %}
-
-            </div>
-        </div>
-
-    </section>
-
-    <footer>
-
-        <ul class="sci">
-            <li>
-                <a href="#"><img src="{% static 'img/facebook.png' %}" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/twitter.png' %}" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/instagram.png' %}" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/facebook.png' %}" /></a>
-            </li>
+    <header>
+        <a href="#"> <img src="{% static 'img/categories/logo.png' %}" class="logo"/></a>
+        <div class="toggle" onclick="toggleMenu()"></div>
+        <ul class="navigation">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Food Categories</a></li>
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">Logout</a></li>
         </ul>
-    </footer>
-    <script>
-        function toggleMenu() {
-            const menuToggle = document.querySelector(".toggle");
-            const navigation = document.querySelector(".navigation");
-            menuToggle.classList.toggle("active");
-            navigation.classList.toggle("active");
-        }
-    </script>
+    </header>
+
+
+    <div class="content">
+        <div class="itemsInColumn">
+            {% for dish in All_Dishes %}
+            <div class="item">
+                <img src="{% static 'img/categories/burger.png' %}" class="itemPicture">
+                <h3 class="itemTitle">{{dish.name}}</h3>
+                <p class="itemDescription">{{dish.description}}</p>
+                <h6 class="itemPrice">${{dish.price}}</h6>
+                <button class="buy-1">Add to cart</button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</section>
+
+<footer>
+    <ul class="sci">
+        <li>
+            <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+        </li>
+        <li>
+            <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
+        </li>
+        <li>
+            <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
+        </li>
+        <li>
+            <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+        </li>
+    </ul>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const menuToggle = document.querySelector(".toggle");
+        const navigation = document.querySelector(".navigation");
+        menuToggle.classList.toggle("active");
+        navigation.classList.toggle("active");
+    }
+</script>
 </body>
 
 </html>
