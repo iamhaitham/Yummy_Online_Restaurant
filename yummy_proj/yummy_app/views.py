@@ -15,3 +15,6 @@ def category(request,category):
         "Number":3,
     }
     return render(request,"categories.html",context)
+
+def cart(request):
+    return render(request, "cart.html")
