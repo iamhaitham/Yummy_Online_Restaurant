@@ -19,7 +19,7 @@ section {
 }
 
 footer {
-    background: #070d59;  /* Colors HERE-------------------------  */
+    background: #070d59; /* Colors HERE-------------------------  */
 }
 
 section .circle {
@@ -195,6 +195,7 @@ header .navigation li a {
     .item {
         width: 100%;
         margin-left: 75%;
+        margin: 25px 0 0 0;
     }
 
     header {
