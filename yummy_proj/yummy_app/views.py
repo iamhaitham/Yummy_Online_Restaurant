@@ -22,9 +22,18 @@ def category(request, category):
 
 def cart(request):
     user_id = request.session['id']
+    totalprice = 0
+    items = models.getAllInCart(user_id)
+    itemslist = []
+    for item in items:
+        itemslist.append(
+            (item, models.getdishquantity(user_id, item), item.price * models.getdishquantity(user_id, item)))
+        totalprice += item.price * models.getdishquantity(user_id, item)
     context = {
-        'items': models.getAllInCart(user_id)
+        'items': itemslist,
+        'totalprice': totalprice
     }
+
     return render(request, "cart.html", context)
 
 
@@ -32,9 +41,25 @@ def addToCart(request, category):
     if request.method == "POST":
         user_id = request.session["id"]
         dishToAdd = request.POST["dishToAdd"]
-        user = models.getuserby_id(int(user_id))
-        if user is not None:
-            models.addToCart(user, dishToAdd)
+        models.addToCart(int(user_id), dishToAdd)
         return redirect("/yummy/" + category)
     else:
         return HttpResponse("You aren't allowed to manually modify the URL!")
+
+
+def removeFromCart(request, dishid):
+    user_id = request.session['id']
+    models.removedish(user_id, dishid)
+    totalprice = 0
+    items = models.getAllInCart(user_id)
+    itemslist = []
+    for item in items:
+        itemslist.append(
+            (item, models.getdishquantity(user_id, item), item.price * models.getdishquantity(user_id, item)))
+        totalprice += item.price * models.getdishquantity(user_id, item)
+    context = {
+        'items': itemslist,
+        'totalprice': totalprice
+    }
+
+    return render(request, 'cart_update.html', context)

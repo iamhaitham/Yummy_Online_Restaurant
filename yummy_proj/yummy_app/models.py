@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import F
 
 from login_register_app.models import User
 
@@ -53,10 +54,16 @@ class Order(models.Model):
 
 
 class Cart(models.Model):
-    dish = models.ManyToManyField(Dish, related_name="carts")
+    dish = models.ManyToManyField(Dish, through='cartdish')
     user = models.OneToOneField(User, related_name="cart", on_delete=models.CASCADE, primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Cartdish(models.Model):
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
 
 def getCategoryByName(category):
@@ -64,11 +71,13 @@ def getCategoryByName(category):
     return category.dishes.all()
 
 
-def addToCart(user, dishToAdd):
-    if user.cart is None:
-        cart = Cart.objects.create(user=user)
-    cart = user.cart
-    cart.dish.add(dishToAdd)
+def getdishby_id(dishid):
+    try:
+        dish = Dish.objects.get(id=dishid)
+    except Exception as e:
+        print("Error getting Dish from database", e)
+        return None
+    return dish
 
 
 def getuserby_id(user_id):
@@ -80,8 +89,38 @@ def getuserby_id(user_id):
     return user
 
 
+def addToCart(user, dishToAdd):
+    dish = getdishby_id(dishToAdd)
+    user = getuserby_id(user)
+    if user is not None and dish is not None:
+
+        cartdish, created = Cartdish.objects.get_or_create(dish=dish, cart=user.cart)
+        if not created:
+            cartdish.quantity = F('quantity') + 1
+            cartdish.save(update_fields=["quantity"])
+    else:
+        print("Error adding to cart")
+
+
 def getAllInCart(user_id):
     user = getuserby_id(user_id)
     if user is not None:
         return user.cart.dish.all()
     return []
+
+
+def removedish(user_id, dishid):
+    dish = getdishby_id(dishid)
+    user = getuserby_id(user_id)
+    if user is not None and dish is not None:
+        user.cart.dish.remove(dish)
+    else:
+        print("Error deleting dish from cart")
+
+
+def getdishquantity(user_id, dish):
+    user = getuserby_id(user_id)
+    cart = user.cart
+    if user is not None and cart is not None:
+        return dish.cartdish_set.get(cart=cart).quantity
+    return 1
