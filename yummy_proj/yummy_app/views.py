@@ -63,3 +63,22 @@ def removeFromCart(request, dishid):
     }
 
     return render(request, 'cart_update.html', context)
+
+
+def updateqty(request, id):
+    cartdishobj = models.Cartdish.objects.filter(dish=models.getdishby_id(id))
+    if cartdishobj != {}:
+        cartdishobj.update(quantity=int(request.GET['quantity']))
+    user_id = request.session['id']
+    totalprice = 0
+    items = models.getAllInCart(user_id)
+    itemslist = []
+    for item in items:
+        itemslist.append(
+            (item, models.getdishquantity(user_id, item), item.price * models.getdishquantity(user_id, item)))
+        totalprice += item.price * models.getdishquantity(user_id, item)
+    context = {
+        'items': itemslist,
+        'totalprice': totalprice
+    }
+    return render(request, 'cartupdate_qty.html', context)

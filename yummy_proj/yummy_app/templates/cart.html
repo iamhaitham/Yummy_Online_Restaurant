@@ -55,17 +55,17 @@
                                 <h3>{{item.0.name}}</h3>
 
                                 <p><input id="qty" type="number" class="qty" value={{item.1}} placeholder="1"/> x
-                                    {{item.0.price}}
+                                    <span class="myprice">{{item.0.price}}₪</span>
                                 </p>
 
                                 <p class="stockStatus">In Stock</p>
                             </div>
 
                             <div class="prodTotal cartSection">
-                                <p>₪{{ item.0.price|mul:item.1 }}</p>
+                                <p id="itemprice">₪{{ item.0.price|mul:item.1 }}</p>
                             </div>
                             <div class="cartSection removeWrap">
-                                <a href="5" class="remove">x</a>
+                                <a href="" class="remove">x</a>
                             </div>
                         </div>
                     </li>
