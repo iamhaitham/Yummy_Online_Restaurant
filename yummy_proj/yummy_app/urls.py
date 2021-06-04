@@ -6,9 +6,8 @@ urlpatterns = [
 
     path('', views.home),
     path('<category>', views.category),
-    path('addToCart/<category>',views.addToCart),
-    # path('cart/cart', views.cart),
-    #TODO fix this route to soemthing like /yummy/cart
-    #TODO fix the <category> route so its soemthing like /catelog/<Category>
-
+    path('cart/cart', views.cart),
+    path('addToCart/<category>', views.addToCart),
+    # TODO fix this route to soemthing like /yummy/cart
+    # TODO fix the <category> route so its soemthing like /catelog/<Category> 
 ]
