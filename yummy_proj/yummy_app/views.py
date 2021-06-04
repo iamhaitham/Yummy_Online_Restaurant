@@ -1,14 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
 
+from django.shortcuts import render, redirect
 from . import models
 
 
 # Create your views here.
 
 def home(request):
-    return render(request, "home.html")
-
+    return  HttpResponse("This is a placeholder for root")
 
 def category(request, category):
     context = {
@@ -31,3 +30,4 @@ def addToCart(request, category):
         return redirect("/addToCart/" + category)
     else:
         return HttpResponse("You aren't allowed to manually modify the URL!")
+

@@ -9,6 +9,5 @@ urlpatterns = [
     path('cart/cart', views.cart),
     path('addToCart/<category>', views.addToCart),
     # TODO fix this route to soemthing like /yummy/cart
-    # TODO fix the <category> route so its soemthing like /catelog/<Category>
-
+    # TODO fix the <category> route so its soemthing like /catelog/<Category> 
 ]
