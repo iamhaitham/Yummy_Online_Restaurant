@@ -54,7 +54,7 @@
                                 <p id="itemid" class="itemNumber">ID#{{ item.0.id }}</p>
                                 <h3>{{item.0.name}}</h3>
 
-                                <p><input id="qty" type="number" class="qty" value={{item.1}} placeholder="1"/> x
+                                <p><input id="qty" type="number" min=1 class="qty" value={{item.1}} placeholder="1"/> x
                                     <span class="myprice">{{item.0.price}}₪</span>
                                 </p>
 
