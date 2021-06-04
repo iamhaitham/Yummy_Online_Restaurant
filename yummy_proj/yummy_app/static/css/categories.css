@@ -146,8 +146,9 @@ header .navigation li a {
 }
 
 .itemPicture {
-    width: 200px;
+    width: 250px;
     height: 200px;
+    border-radius: 10px;
     text-align: center;
     margin: 0 auto;
     display: block;

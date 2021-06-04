@@ -29,7 +29,7 @@ class Dish(models.Model):
     description = models.CharField(max_length=255)
     price = models.FloatField()
     category = models.ForeignKey(Category, related_name="dishes", on_delete=models.CASCADE)
-    image=models.TextField(null=True)
+    image = models.TextField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -60,11 +60,28 @@ class Cart(models.Model):
 
 
 def getCategoryByName(category):
-    category=Category.objects.get(name=category)
+    category = Category.objects.get(name=category)
     return category.dishes.all()
 
-def addToCart(user_id,dishToAdd):
-    cart=Cart.objects.create(user=user_id)
+
+def addToCart(user, dishToAdd):
+    if user.cart is None:
+        cart = Cart.objects.create(user=user)
+    cart = user.cart
     cart.dish.add(dishToAdd)
-    
-    
+
+
+def getuserby_id(user_id):
+    try:
+        user = User.objects.get(id=user_id)
+    except Exception as e:
+        print("Error getting uer from database", e)
+        return None
+    return user
+
+
+def getAllInCart(user_id):
+    user = getuserby_id(user_id)
+    if user is not None:
+        return user.cart.dish.all()
+    return []

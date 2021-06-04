@@ -1,13 +1,15 @@
 from django.http import HttpResponse
-
 from django.shortcuts import render, redirect
+
 from . import models
 
 
 # Create your views here.
 
 def home(request):
-    return  render(request,'home.html')
+    request.session['id'] = 1
+    return render(request, 'home.html')
+
 
 def category(request, category):
     context = {
@@ -19,15 +21,20 @@ def category(request, category):
 
 
 def cart(request):
-    return render(request, "cart.html")
+    user_id = request.session['id']
+    context = {
+        'items': models.getAllInCart(user_id)
+    }
+    return render(request, "cart.html", context)
 
 
 def addToCart(request, category):
     if request.method == "POST":
         user_id = request.session["id"]
         dishToAdd = request.POST["dishToAdd"]
-        models.addToCart(user_id, dishToAdd)
-        return redirect("/addToCart/" + category)
+        user = models.getuserby_id(int(user_id))
+        if user is not None:
+            models.addToCart(user, dishToAdd)
+        return redirect("/yummy/" + category)
     else:
         return HttpResponse("You aren't allowed to manually modify the URL!")
-
