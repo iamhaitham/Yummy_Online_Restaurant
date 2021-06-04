@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>Categories</title>
+    <title>{{categoryName}}</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
     <!-- Load static -->
     {% load static %}
@@ -32,13 +32,21 @@
     <div class="content">
         <div class="itemsInColumn">
             {% for dish in All_Dishes %}
+
+
             <div class="item">
-                <img src="{% static 'img/categories/burger.png' %}" class="itemPicture">
+                <img src="{{dish.image}}" class="itemPicture">
                 <h3 class="itemTitle">{{dish.name}}</h3>
                 <p class="itemDescription">{{dish.description}}</p>
-                <h6 class="itemPrice">₪{{dish.price}}</h6>
-                <button class="buy-1">Add to cart</button>
+                <h6 class="itemPrice">${{dish.price}}</h6>
+                <form action="addToCart/{{dish.category.name}}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="dishToAdd" value="{{dish.id}}">
+                    <button class="buy-1">Add to cart</button>
+                </form>
             </div>
+
+
             {% endfor %}
         </div>
     </div>
