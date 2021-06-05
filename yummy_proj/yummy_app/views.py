@@ -9,7 +9,7 @@ from . import models
 # Create your views here.
 
 def home(request):
-    request.session['id'] = 1
+    request.session['id'] = 0
     return render(request, 'home.html')
 
 
