@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -14,12 +15,12 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #070d59;
+    background: #161616;
     /* Colors HERE-------------------------  */
 }
 
 footer {
-    background: #070d59;
+    background: #161616;
     /* Colors HERE-------------------------  */
 }
 
@@ -29,7 +30,7 @@ section .circle {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ee6f57;
+    background: #9bdead;
     /* Colors HERE-------------------------  */
     clip-path: circle(70% at right -20%);
 }
@@ -72,7 +73,7 @@ header .navigation li a {
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -193,27 +194,34 @@ header .navigation li a {
         flex-direction: column;
         justify-content: space-evenly;
     }
+
     .item {
         width: 100%;
         margin-left: 75%;
         margin: 25px 0 0 0;
     }
+
     header {
         padding: 40px;
     }
+
     section {
         padding: 150px 40px;
     }
+
     .sci {
         /*left: 5%;*/
         width: fit-content;
     }
+
     .content {
         flex-direction: column;
     }
+
     header .navigation {
         display: none;
     }
+
     header .navigation.active {
         position: fixed;
         top: 0;
@@ -227,11 +235,13 @@ header .navigation li a {
         align-items: center;
         z-index: 10;
     }
+
     .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
     }
+
     header .toggle {
         position: relative;
         width: 30px;
@@ -243,6 +253,7 @@ header .navigation li a {
         cursor: pointer;
         z-index: 10000;
     }
+
     .toggle.active {
         position: fixed;
         right: 40px;
@@ -275,7 +286,7 @@ header .navigation li a {
     background-clip: padding-box;
 }
 
-.ui-autocomplete>li>div {
+.ui-autocomplete > li > div {
     display: block;
     padding: 3px 20px;
     clear: both;
