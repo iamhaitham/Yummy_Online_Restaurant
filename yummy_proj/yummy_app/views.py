@@ -102,12 +102,29 @@ def info(request, id):
 
 def searchdish(requset, phrase):
     namelist = []
-    for item in models.searchdishes(phrase):
+    categoryname = requset.GET['category']
+    for item in models.searchdishes(phrase, categoryname):
         namelist.append(item.name)
     json_list = json.dumps(namelist)
 
     context = {
-        "All_Dishes": models.searchdishes(phrase),
+        "All_Dishes": models.searchdishes(phrase, categoryname),
         "namelist": json_list,
     }
     return render(requset, "categories_update.html", context)
+
+
+def resetsearch(request):
+    categoryname = request.GET['category']
+    namelist = []
+    for item in models.getCategoryByName(categoryname):
+        namelist.append(item.name)
+    json_list = json.dumps(namelist)
+
+    context = {
+        "categoryName": categoryname,
+        "All_Dishes": models.getCategoryByName(categoryname),
+        "Number": 3,
+        "namelist": json_list,
+    }
+    return render(request, "categories_update.html", context)

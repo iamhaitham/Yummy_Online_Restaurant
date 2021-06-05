@@ -12,6 +12,7 @@ urlpatterns = [
     path('update/<id>', views.updateqty),
     path('info/info/<int:id>', views.info),
     path('search/<str:phrase>', views.searchdish),
+    path('searchreset/',views.resetsearch),
 
     # TODO fix this route to soemthing like /yummy/cart
     # TODO fix the <category> route so its soemthing like /catelog/<Category> 

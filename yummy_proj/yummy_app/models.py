@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import F
+from django.db.models import F, Q
 
 from login_register_app.models import User
 
@@ -131,5 +131,9 @@ def InfoById(id):
     return dish
 
 
-def searchdishes(searchphrase):
-    return Dish.objects.filter(name__icontains=searchphrase)
+def searchdishes(searchphrase, categoryname):
+    category = getCategoryByName(categoryname)
+    criterion1 = Q(name__icontains=searchphrase)
+    criterion2 = Q(category__name=categoryname)
+    q = Dish.objects.filter(criterion1 & criterion2)
+    return q
