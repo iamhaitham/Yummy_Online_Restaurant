@@ -82,3 +82,10 @@ def updateqty(request, id):
         'totalprice': totalprice
     }
     return render(request, 'cartupdate_qty.html', context)
+  
+def info(request, id):
+    context={
+        "dish":models.InfoById(id=id)
+    }
+    return render(request,"info.html", context)  
+
