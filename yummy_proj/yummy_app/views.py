@@ -9,7 +9,12 @@ from . import models
 # Create your views here.
 
 def home(request):
-    request.session['id'] = 0
+    if 'loggedin' not in request.session:
+        request.session['id'] = 0
+    user_id = request.session['id']
+    if models.havecart(user_id) is None:
+        models.createcart(user_id)
+
     return render(request, 'home.html')
 
 
@@ -50,7 +55,11 @@ def addToCart(request, category):
     if request.method == "POST":
         user_id = request.session["id"]
         dishToAdd = request.POST["dishToAdd"]
-        models.addToCart(int(user_id), dishToAdd)
+        if 'qty' in request.POST:
+            qty = int(request.POST['qty'])
+            models.addToCart(int(user_id), dishToAdd, qty)
+        else:
+            models.addToCart(int(user_id), dishToAdd)
         return redirect("/yummy/" + category)
     else:
         return HttpResponse("You aren't allowed to manually modify the URL!")

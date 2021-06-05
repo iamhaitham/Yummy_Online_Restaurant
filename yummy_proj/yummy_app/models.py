@@ -89,14 +89,16 @@ def getuserby_id(user_id):
     return user
 
 
-def addToCart(user, dishToAdd):
+def addToCart(user, dishToAdd, qty=1):
     dish = getdishby_id(dishToAdd)
     user = getuserby_id(user)
     if user is not None and dish is not None:
-
         cartdish, created = Cartdish.objects.get_or_create(dish=dish, cart=user.cart)
         if not created:
-            cartdish.quantity = F('quantity') + 1
+            cartdish.quantity = F('quantity') + qty
+            cartdish.save(update_fields=["quantity"])
+        else:
+            cartdish.quantity = qty
             cartdish.save(update_fields=["quantity"])
     else:
         print("Error adding to cart")
@@ -137,3 +139,20 @@ def searchdishes(searchphrase, categoryname):
     criterion2 = Q(category__name=categoryname)
     q = Dish.objects.filter(criterion1 & criterion2)
     return q
+
+
+def havecart(user_id):
+    user = getuserby_id(user_id)
+    try:
+        return user.cart
+    except Cart.DoesNotExist as e:
+        return None
+
+
+def createcart(user_id):
+    user = getuserby_id(user_id)
+    Cart.objects.create(user=user)
+
+
+def deleteguestcart():
+    Cartdish.objects.filter(cart_id=0).delete()

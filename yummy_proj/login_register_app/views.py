@@ -2,6 +2,7 @@ import bcrypt
 from django.contrib import messages
 from django.shortcuts import render, redirect
 
+import yummy_app
 from . import models
 from .models import User
 
@@ -68,5 +69,6 @@ def welcome(request):
 
 
 def logout(request):
+    yummy_app.models.deleteguestcart()
     request.session.clear()
     return redirect('/yummy')
