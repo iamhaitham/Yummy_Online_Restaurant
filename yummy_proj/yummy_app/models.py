@@ -70,6 +70,7 @@ def getCategoryByName(category):
     category = Category.objects.get(name=category)
     return category.dishes.all()
 
+
 def getdishby_id(dishid):
     try:
         dish = Dish.objects.get(id=dishid)
@@ -123,7 +124,12 @@ def getdishquantity(user_id, dish):
     if user is not None and cart is not None:
         return dish.cartdish_set.get(cart=cart).quantity
     return 1
-  
+
+
 def InfoById(id):
-    dish=Dish.objects.get(id=id)
+    dish = getdishby_id(id)
     return dish
+
+
+def searchdishes(searchphrase):
+    return Dish.objects.filter(name__icontains=searchphrase)

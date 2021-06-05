@@ -1,3 +1,5 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -12,11 +14,18 @@ def home(request):
 
 
 def category(request, category):
+    namelist = []
+    for item in models.getCategoryByName(category):
+        namelist.append(item.name)
+    json_list = json.dumps(namelist)
+
     context = {
         "categoryName": category,
         "All_Dishes": models.getCategoryByName(category),
         "Number": 3,
+        "namelist": json_list,
     }
+
     return render(request, "categories.html", context)
 
 
@@ -82,10 +91,23 @@ def updateqty(request, id):
         'totalprice': totalprice
     }
     return render(request, 'cartupdate_qty.html', context)
-  
-def info(request, id):
-    context={
-        "dish":models.InfoById(id=id)
-    }
-    return render(request,"info.html", context)  
 
+
+def info(request, id):
+    context = {
+        "dish": models.InfoById(id=id)
+    }
+    return render(request, "info.html", context)
+
+
+def searchdish(requset, phrase):
+    namelist = []
+    for item in models.searchdishes(phrase):
+        namelist.append(item.name)
+    json_list = json.dumps(namelist)
+
+    context = {
+        "All_Dishes": models.searchdishes(phrase),
+        "namelist": json_list,
+    }
+    return render(requset, "categories_update.html", context)
