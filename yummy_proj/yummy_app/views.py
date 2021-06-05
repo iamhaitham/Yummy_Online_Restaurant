@@ -31,3 +31,9 @@ def addToCart(request, category):
     else:
         return HttpResponse("You aren't allowed to manually modify the URL!")
 
+def info(request, id):
+    context={
+        "dish":models.InfoById(id=id)
+    }
+    return render(request,"info.html", context)
+
