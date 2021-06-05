@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-
 * {
     margin: 0;
     padding: 0;
@@ -15,11 +14,13 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #070d59; /* Colors HERE-------------------------  */
+    background: #070d59;
+    /* Colors HERE-------------------------  */
 }
 
 footer {
-    background: #070d59; /* Colors HERE-------------------------  */
+    background: #070d59;
+    /* Colors HERE-------------------------  */
 }
 
 section .circle {
@@ -28,7 +29,8 @@ section .circle {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ee6f57;  /* Colors HERE-------------------------  */
+    background: #ee6f57;
+    /* Colors HERE-------------------------  */
     clip-path: circle(70% at right -20%);
 }
 
@@ -51,6 +53,7 @@ header .logo {
 header .navigation {
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 header .navigation li {
@@ -146,8 +149,8 @@ header .navigation li a {
 }
 
 .itemPicture {
-    width: 250px;
-    height: 200px;
+    width: 80%;
+    height: 80%;
     border-radius: 10px;
     text-align: center;
     margin: 0 auto;
@@ -185,42 +188,32 @@ header .navigation li a {
 }
 
 @media (max-width: 991px) {
-
-
     .itemsInColumn {
         align-content: flex-end;
         flex-direction: column;
         justify-content: space-evenly;
     }
-
-
     .item {
         width: 100%;
         margin-left: 75%;
         margin: 25px 0 0 0;
     }
-
     header {
         padding: 40px;
     }
-
     section {
         padding: 150px 40px;
     }
-
     .sci {
         /*left: 5%;*/
         width: fit-content;
     }
-
     .content {
         flex-direction: column;
     }
-
     header .navigation {
         display: none;
     }
-
     header .navigation.active {
         position: fixed;
         top: 0;
@@ -234,13 +227,11 @@ header .navigation li a {
         align-items: center;
         z-index: 10;
     }
-
     .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
     }
-
     header .toggle {
         position: relative;
         width: 30px;
@@ -252,7 +243,6 @@ header .navigation li a {
         cursor: pointer;
         z-index: 10000;
     }
-
     .toggle.active {
         position: fixed;
         right: 40px;
@@ -261,4 +251,56 @@ header .navigation li a {
         background-repeat: no-repeat;
         background-position: center;
     }
+}
+
+.ui-autocomplete {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+    background-clip: padding-box;
+}
+
+.ui-autocomplete>li>div {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333333;
+    white-space: nowrap;
+}
+
+.ui-state-hover,
+.ui-state-active,
+.ui-state-focus {
+    text-decoration: none;
+    color: #262626;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
