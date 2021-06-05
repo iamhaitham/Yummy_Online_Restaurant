@@ -32,3 +32,7 @@ class Restaurant(admin.ModelAdmin):
 @admin.register(Category)
 class Category(admin.ModelAdmin):
     pass
+
+@admin.register(Cartdish)
+class Cartdish(admin.ModelAdmin):
+    pass

@@ -40,7 +40,7 @@
                 </form>
                 <h3 class="itemTitle">{{dish.name}}</h3>
                 <p class="itemDescription">{{dish.description}}</p>
-                <h6 class="itemPrice">${{dish.price}}</h6>
+                <h6 class="itemPrice">₪{{dish.price}}</h6>
                 <form action="addToCart/{{dish.category.name}}" method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="dishToAdd" value="{{dish.id}}">
