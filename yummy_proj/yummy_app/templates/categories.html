@@ -34,7 +34,10 @@
         <div class="content">
             {% for dish in All_Dishes %}
             <div class="item">
-                <img src="{{dish.image}}" class="itemPicture">
+                <form action="info/info/{{dish.id}}" method="POST">
+                {% csrf_token %}
+                <input type="image" src="{{dish.image}}" class="itemPicture">
+                </form>
                 <h3 class="itemTitle">{{dish.name}}</h3>
                 <p class="itemDescription">{{dish.description}}</p>
                 <h6 class="itemPrice">₪{{dish.price}}</h6>
