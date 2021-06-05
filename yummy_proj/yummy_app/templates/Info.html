@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>swiper</title>
+		{% load static %}
+		<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+		<script src="js/scripts.js"></script>
+		 <!-- Bootstrap core JS-->
+		 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+		<link rel="stylesheet" href="{% static 'css/info.css' %}">   
+		
+	</head>
+	<body>
+			<section>
+				<div class="circle"></div>
+				<header>
+					<a href="#"> <img src="{% static 'img/logo.png' %}" class="logo" /></a>
+					<div class="toggle" onclick="toggleMenu()"></div>
+					<ul class="navigation">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Food Categories</a></li>
+						<li><a href="#">Orders</a></li>
+						<li><a href="#">Contacts</a></li>
+						<li><a href="#">Logout</a></li>
+					</ul>
+				</header>
+			        <!-- Product section-->
+					<section class="py-5" style="background: none; color: white;">
+						<div class="container px-4 px-lg-5 my-5">
+							<div class="row gx-4 gx-lg-5 align-items-center">
+								<div class="col-md-6"><img id="itemPlaceHolder" class="card-img-top mb-5 mb-md-0" src="{% static 'img/burger.png' %}" alt="..." /></div>
+								<div class="col-md-6">
+									<div class="display-5 fw-bolder">{{dish.name}}</div>
+									<h1 class="mb-1"   style="font-size: 20px;" >{{dish.description}}</h1>
+									<div class="fs-5 mb-5">
+										
+										<span>₪{{dish.price}}</span>
+									</div>
+									
+									<div class="d-flex">
+										<input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+										<button class="btn btn-outline-dark flex-shrink-0 whitecolor" type="button">
+											<i class="bi-cart-fill me-1"></i>
+											Add to cart
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+		</section>
+
+		<footer>
+			<ul class="sci">
+				<li>
+					<a href="#"><img src="{% static 'img/facebook.png' %}" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="{% static 'img/twitter.png' %}" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="{% static 'img/instagram.png' %}" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="{% static 'img/facebook.png' %}" /></a>
+				</li>
+			</ul>
+		</footer>
+
+		<script>
+			function toggleMenu() {
+				const menuToggle = document.querySelector(".toggle");
+				const navigation = document.querySelector(".navigation");
+				menuToggle.classList.toggle("active");
+				navigation.classList.toggle("active");
+			}
+		</script>
+	</body>
+</html>

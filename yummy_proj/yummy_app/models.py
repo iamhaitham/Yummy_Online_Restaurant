@@ -67,4 +67,6 @@ def addToCart(user_id,dishToAdd):
     cart=Cart.objects.create(user=user_id)
     cart.dish.add(dishToAdd)
     
-    
+def InfoById(id):
+    dish=Dish.objects.get(id=id)
+    return dish
