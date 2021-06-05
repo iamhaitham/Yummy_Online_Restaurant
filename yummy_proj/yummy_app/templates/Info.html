@@ -22,14 +22,30 @@
 <section>
     <div class="circle"></div>
     <header>
-        <a href="#"> <img src="{% static 'img/logo.png' %}" class="logo"/></a>
-        <div class="toggle" onclick="toggleMenu()"></div>
+        <a href="/yummy"> <img src="{% static 'img/categories/logo.png' %}" class="logo"></a>
+        <div class="toggle" onclick="toggleMenu()">
+        </div>
         <ul class="navigation">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Food Categories</a></li>
+            <li><a href="/yummy">Home</a></li>
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                <ul class="dropdown-menu  bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item m-0" href="Fast Food">Fast Food</a></li>
+                    <li><a class="dropdown-item m-0" href="Pastries">Pastries</a></li>
+                    <li><a class="dropdown-item m-0" href="Traditional">Traditional</a></li>
+                    <li><a class="dropdown-item m-0" href="Desserts">Desserts</a></li>
+                    <li><a class="dropdown-item m-0" href="Drinks">Drinks</a></li>
+                    <li><a class="dropdown-item m-0" href="Salads">Salads</a></li>
+                </ul>
+            </li>
             <li><a href="#">Orders</a></li>
             <li><a href="#">Contacts</a></li>
-            <li><a href="#">Logout</a></li>
+            {% if request.session.loggedin %}
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/">Login</a></li>
+            {% endif %}
         </ul>
     </header>
     <!-- Product section-->
