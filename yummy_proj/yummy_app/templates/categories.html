@@ -11,8 +11,13 @@
     <link rel="stylesheet" href="{% static 'css/Categories.css' %}"/>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 </head>
+
 
 <body>
 <section>
@@ -23,6 +28,12 @@
         </div>
         <ul class="navigation">
             <li><a href="/yummy">Home</a></li>
+            <li>
+                <form class="ui-widget">
+                    <label for="tags">Tags: </label>
+                    <input type="search" id="tags" class="form-control" placeholder="Search..." aria-label="Search">
+                </form>
+            </li>
             <li><a href="#">Food Categories</a></li>
             <li><a href="#">Orders</a></li>
             <li><a href="#">Contacts</a></li>
@@ -30,13 +41,14 @@
         </ul>
     </header>
 
+
     <div class="itemsInColumn">
         <div class="content">
             {% for dish in All_Dishes %}
             <div class="item">
                 <form action="info/info/{{dish.id}}" method="POST">
-                {% csrf_token %}
-                <input type="image" src="{{dish.image}}" class="itemPicture">
+                    {% csrf_token %}
+                    <input type="image" src="{{dish.image}}" class="itemPicture">
                 </form>
                 <h3 class="itemTitle">{{dish.name}}</h3>
                 <p class="itemDescription">{{dish.description}}</p>
@@ -48,7 +60,6 @@
                 </form>
             </div>
             {% endfor %}
-
         </div>
     </div>
 
@@ -80,6 +91,43 @@
         navigation.classList.toggle("active");
     }
 </script>
+
+<script>
+
+    $(function () {
+        var availableTags = JSON.parse('{{ namelist|safe }}');
+        $("#tags").autocomplete({
+            source: availableTags
+        });
+    });
+
+
+    $(":input").bind('keyup change click', function (e) {
+        m = $(this)
+        if (!$(this).data("previousValue") ||
+            $(this).data("previousValue") != $(this).val()
+        ) {
+            $(this).data("previousValue", $(this).val());
+            phrase = m.val()
+            $.ajax({
+                url: 'search/' + phrase,
+                method: 'get',
+                data: {
+                    phrase: phrase // will be accessible in $_POST['data1']
+                },
+                success: function (serverResponse) {
+                    // Replace the html inside a div with the class "posts" with the server response
+                    $(document).find('.itemsInColumn').html(serverResponse)
+                }
+            });
+        }
+
+    });
+
+
+</script>
+
+
 </body>
 
 </html>
