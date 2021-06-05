@@ -9,7 +9,7 @@ from .models import User
 # Create your views here.
 
 def root(request):
-    if 'id' in request.session:
+    if 'loggedin' in request.session:
         return redirect('/yummy')
     return render(request, "index.html")
 
@@ -32,7 +32,6 @@ def login(request):
         if user is not None and bcrypt.checkpw(password.encode(), user.password.encode()):
             request.session['id'] = user.id
             request.session['loggedin'] = True
-            messages.success(request, 'Successfully Logged In!')
             return redirect('/welcome')
         else:
             messages.error(request, "Invalid password or email!")
@@ -58,7 +57,6 @@ def register(request):
                 user = models.create_user(username, phone_number=phone, city="berzeit", password=hashed_password)
                 request.session['id'] = user.id
                 request.session['loggedin'] = True
-                messages.success(request, 'Successfully Registered!')
                 return redirect('/welcome')
     return redirect('/')
 
@@ -71,4 +69,4 @@ def welcome(request):
 
 def logout(request):
     request.session.clear()
-    return redirect('/')
+    return redirect('/yummy')

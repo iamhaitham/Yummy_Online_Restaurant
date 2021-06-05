@@ -35,7 +35,14 @@
             </li>
             <li><a href="#">Orders</a></li>
             <li><a href="#">Contacts</a></li>
+            {% if request.session.loggedin %}
             <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/">Login</a></li>
+            {% endif %}
+
+
+
         </ul>
     </header>
 
