@@ -404,7 +404,7 @@ a.remove:hover {
     font-family: "Montserrat", sans-serif;
     font-size: 0.85em;
     text-transform: uppercase;
-    color: #777;
+    color: #fff;
 }
 
 .subtotal .totalRow .value {
@@ -472,4 +472,6 @@ a.remove:hover {
     width: 30px;
     height: 30px;
     padding-left: 7px;
+    margin-left: 10px;
+
 }

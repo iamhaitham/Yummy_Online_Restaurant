@@ -31,7 +31,6 @@
                         EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
                         ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
             ************************************************************************ -->
-            <a href="/yummy/cart"><img src="{% static 'img/fullCart.ico' %}" alt="fullCart" class="cartIcon"></a>
             <li>
                 <div class="ui-widget">
                     <input type="search" id="tags" class="form-control" placeholder="Search..." aria-label="Search">
@@ -137,7 +136,7 @@
             phrase = m.val()
             if (phrase != '') {
                 $.ajax({
-                    url: 'search/' + phrase,
+                    url: '/yummy/search/' + phrase,
                     method: 'get',
                     data: {
                         phrase: phrase, // will be accessible in $_get['phrase']
@@ -150,7 +149,7 @@
                 });
             } else {
                 $.ajax({
-                    url: 'searchreset/',
+                    url: '/yummy/searchreset/',
                     method: 'get',
                     data: {
                         category: '{{categoryName}}'

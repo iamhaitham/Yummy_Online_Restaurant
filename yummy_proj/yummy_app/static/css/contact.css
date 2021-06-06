@@ -49,6 +49,7 @@ header .logo {
 header .navigation {
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 header .navigation li {
@@ -220,4 +221,5 @@ header .navigation li a {
     width: 30px;
     height: 30px;
     padding-left: 7px;
+    margin-left: 10px;
 }

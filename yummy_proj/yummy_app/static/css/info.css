@@ -47,6 +47,7 @@ header .logo {
 header .navigation {
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 header .navigation li {
@@ -213,5 +214,6 @@ footer {
     width: 30px;
     height: 30px;
     padding-left: 7px;
+    margin-left: 10px;
 
 }
