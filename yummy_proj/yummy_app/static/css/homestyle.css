@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +15,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #161616/* Colors HERE-------------------------  */
+    background: #161616 /* Colors HERE-------------------------  */
 }
 
 section .circle {
@@ -177,25 +178,32 @@ header .navigation li a {
     header {
         padding: 40px;
     }
+
     section {
         padding: 150px 40px;
     }
+
     .sci {
         left: 40px;
     }
+
     .content {
         flex-direction: column;
     }
+
     .content .textBox,
     .content .img box {
         max-width: 100%;
     }
+
     .swiper-slide {
         height: 300px;
     }
+
     header .navigation {
         display: none;
     }
+
     header .navigation.active {
         position: fixed;
         top: 0;
@@ -209,11 +217,13 @@ header .navigation li a {
         align-items: center;
         z-index: 10;
     }
+
     .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
     }
+
     header .toggle {
         position: relative;
         width: 30px;
@@ -225,6 +235,7 @@ header .navigation li a {
         cursor: pointer;
         z-index: 10000;
     }
+
     .toggle.active {
         position: fixed;
         right: 40px;
@@ -238,4 +249,5 @@ header .navigation li a {
 .cartIcon {
     width: 30px;
     height: 30px;
+    padding-left: 7px;
 }

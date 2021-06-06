@@ -215,3 +215,9 @@ header .navigation li a {
     color: white;
     margin-left: 0px;
 }
+
+.cartIcon {
+    width: 30px;
+    height: 30px;
+    padding-left: 7px;
+}

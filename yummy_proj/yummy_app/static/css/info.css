@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -108,19 +109,24 @@ header .navigation li a {
     header {
         padding: 40px;
     }
+
     section {
         padding: 150px 40px;
     }
+
     .sci {
         /*left: 5%;*/
         width: fit-content;
     }
+
     .content {
         flex-direction: column;
     }
+
     header .navigation {
         display: none;
     }
+
     header .navigation.active {
         position: fixed;
         top: 0;
@@ -134,11 +140,13 @@ header .navigation li a {
         align-items: center;
         z-index: 10;
     }
+
     .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
     }
+
     header .toggle {
         position: relative;
         width: 30px;
@@ -150,6 +158,7 @@ header .navigation li a {
         cursor: pointer;
         z-index: 10000;
     }
+
     .toggle.active {
         position: fixed;
         right: 40px;
@@ -158,12 +167,15 @@ header .navigation li a {
         background-repeat: no-repeat;
         background-position: center;
     }
+
     span {
         cursor: pointer;
     }
+
     .number {
         margin: 100px;
     }
+
     input {
         height: 34px;
         width: 100px;
@@ -174,6 +186,7 @@ header .navigation li a {
         display: inline-block;
         vertical-align: middle;
     }
+
     .logo {
         height: 100px;
         width: 100px;
@@ -199,4 +212,6 @@ footer {
 .cartIcon {
     width: 30px;
     height: 30px;
+    padding-left: 7px;
+
 }

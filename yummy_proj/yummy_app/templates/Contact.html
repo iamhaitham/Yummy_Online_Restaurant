@@ -36,11 +36,16 @@
     <section>
         <div class="circle"></div>
         <header>
-            {% load static %}
             <a href="/yummy"> <img src="{% static 'img/categories/logo.png' %}" class="logo"></a>
-            <div class="toggle" onclick="toggleMenu()"></div>
+            <div class="toggle" onclick="toggleMenu()">
+            </div>
             <ul class="navigation">
-                <li><a href="#">Home</a></li>
+                <!-- ************************************************************************
+                            EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
+                            ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
+                ************************************************************************ -->
+                <a href="/yummy/cart"><img src="{% static 'img/fullCart.ico' %}" alt="fullCart" class="cartIcon"></a>
+                <li><a href="/yummy">Home</a></li>
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
@@ -53,9 +58,17 @@
                         <li><a class="dropdown-item m-0" href="/yummy/catalog/Salads">Salads</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Orders</a></li>
-                <li><a href="/yummy/contact">Contacts</a></li>
-                <li><a href="#">Logout</a></li>
+                <a style="text-decoration: none; color: white;" href="/yummy/cart"><img width="30" height="30"
+                                                                                        src="{% static 'img/fullCart.png' %}"
+                                                                                        alt="fullCart" class="cartIcon">
+                    Cart</a>
+                <li><a href="/yummy/orders">Orders</a></li>
+                <li><a href="/yummy/contactus">Contacts</a></li>
+                {% if request.session.loggedin %}
+                    <li><a href="/logout">Logout</a></li>
+                {% else %}
+                    <li><a href="/">Login</a></li>
+                {% endif %}
             </ul>
         </header>
 
@@ -97,20 +110,15 @@
 </div>
 <footer>
     <ul class="sci">
-        <ul class="sci">
-            <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
-            </li>
-        </ul>
+        <li>
+            <a href="https://twitter.com/"><img src="{% static 'img/categories/twitter.png' %}"/></a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/"><img src="{% static 'img/categories/instagram.png' %}"/></a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+        </li>
     </ul>
 </footer>
 <script>
