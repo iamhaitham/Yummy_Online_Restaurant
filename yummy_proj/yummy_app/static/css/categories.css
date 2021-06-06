@@ -76,8 +76,6 @@ header .navigation li a {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    align-items: flex-end
-
 }
 
 .sci {
@@ -116,14 +114,7 @@ header .navigation li a {
     filter: invert(1);
 }
 
-
-.item p {
-    margin-bottom: 3rem;
-}
-
 .item {
-    background: linear-gradient(
-            233deg, #615858, transparent);
     width: 24%;
     margin: 15px;
     box-sizing: border-box;
@@ -133,12 +124,8 @@ header .navigation li a {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding-top: 10px;
-    box-shadow: 0 0 10px rgb(255 255 255 / 10%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.096);
     transition: .4s;
-    display: flex;
-    align-items: stretch;
-    flex-direction: column;
-    justify-content: flex-end;
 }
 
 .buy-1 {
@@ -163,21 +150,18 @@ header .navigation li a {
 }
 
 .itemPicture {
-    width: 90%;
-    height: 200px;
+    width: 80%;
+    height: 80%;
     border-radius: 10px;
     text-align: center;
     margin: 0 auto;
     display: block;
-    object-fit: cover;
-
 }
 
 .itemTitle {
-    height: 70px;
     text-align: center;
     font-size: 30px;
-    margin-bottom: 19px;
+    margin: 0;
     padding-top: 10px;
     color: #f8f1f1;
 }
@@ -186,7 +170,6 @@ header .navigation li a {
     text-align: center;
     padding: 0 8px;
     color: #f8f1f1;
-    height: 58px;
 }
 
 .itemPrice {
