@@ -46,11 +46,39 @@
     <div class="content">
 
         <div class="textBox">
-            <h2>From The Kitchen to Your Door</h2>
-            <p>We offer breakfast and lunch made to order all day and are focused on providing quality service and fresh
-                food, with a smile. We are a small staff and regulars become family. We’d love to get to know you
-                better! See you soon, at the shop!</p>
-            <a href="#">Learn More</a>
+
+
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{% static 'img/homepage/homeburger.png' %}" class="d-block w-100" alt="burger">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'img/homepage/foodmenu.png' %}" class="d-block w-100" alt="menu">
+                    </div>
+                    <div class="carousel-item">
+                        <h2>From The Kitchen to Your Door</h2>
+                        <p>We offer breakfast and lunch made to order all day and are focused on providing quality
+                            service and fresh
+                            food, with a smile. We are a small staff and regulars become family. We’d love to get to
+                            know you
+                            better! See you soon, at the shop!</p>
+                        <a href="#">Learn More</a>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+
         </div>
 
         <div class="imgBox">
