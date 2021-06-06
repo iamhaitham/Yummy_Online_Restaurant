@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +13,14 @@ section {
     min-height: 100vh;
     padding: 100px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     background: #161616;
+    flex-direction: column;
 }
 
 section .circle {
+    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
@@ -107,18 +110,23 @@ header .navigation li a {
     header {
         padding: 40px;
     }
+
     section {
         padding: 150px 40px;
     }
+
     .sci {
         left: 40px;
     }
+
     .content {
         flex-direction: column;
     }
+
     header .navigation {
         display: none;
     }
+
     header .navigation.active {
         position: fixed;
         top: 0;
@@ -132,11 +140,13 @@ header .navigation li a {
         align-items: center;
         z-index: 10;
     }
+
     .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
     }
+
     header .toggle {
         position: relative;
         width: 30px;
@@ -148,6 +158,7 @@ header .navigation li a {
         cursor: pointer;
         z-index: 10000;
     }
+
     .toggle.active {
         position: fixed;
         right: 40px;
@@ -168,6 +179,7 @@ header .navigation li a {
     margin-left: 60px;
     margin-top: -200px;
     color: white;
+    text-align: center;
 }
 
 .text-primary2 {
@@ -175,6 +187,7 @@ header .navigation li a {
     margin-top: 0px;
     margin-left: 10px;
     color: white;
+    text-align: center;
 }
 
 .text-primary3 {
