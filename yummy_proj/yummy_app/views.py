@@ -14,6 +14,9 @@ def home(request):
     user_id = request.session['id']
     if models.havecart(user_id) is None:
         models.createcart(user_id)
+        request.session['havecart'] = 0
+    else:
+        request.session['havecart'] = 1
 
     return render(request, 'home.html')
 
@@ -60,7 +63,13 @@ def addToCart(request, category):
             models.addToCart(int(user_id), dishToAdd, qty)
         else:
             models.addToCart(int(user_id), dishToAdd)
-        return redirect("/yummy/" + category)
+            ################################################
+            ################################################
+            # EDITED THE REDIRECT PARAMETER BECAUSE WE NOW HAVE
+            # THE CATALOG BEFORE NAMING THE CATEGORY
+            ################################################
+            ################################################
+        return redirect("/yummy/catalog/" + category)
     else:
         return HttpResponse("You aren't allowed to manually modify the URL!")
 
@@ -137,3 +146,38 @@ def resetsearch(request):
         "namelist": json_list,
     }
     return render(request, "categories_update.html", context)
+
+    ################################################
+    ################################################
+    # ADDED THIS METHOD
+    ################################################
+    ################################################
+
+
+def orders(request):
+    user_id = request.session["id"]
+    totalprice = 0
+    items = models.getAllInCart(user_id)
+    itemslist = []
+    for item in items:
+        itemslist.append(
+            (item, models.getdishquantity(user_id, item), item.price * models.getdishquantity(user_id, item)))
+        totalprice += item.price * models.getdishquantity(user_id, item)
+    context = {
+        "Orders": models.getAllInCart(user_id),
+        "items": itemslist,
+        'totalprice': totalprice,
+    }
+    return render(request, "orders.html", context)
+
+    ################################################
+    ################################################
+    # ADDED THIS METHOD
+    ################################################
+    ################################################
+
+
+def contactus(request):
+    return render(request, "Contact.html")
+
+

@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 section {
@@ -15,10 +14,6 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #161616;
-}
-
-footer {
     background: #161616;
 }
 
@@ -74,12 +69,12 @@ header .navigation li a {
 }
 
 .sci {
-    position: relative;
-    bottom: 60px;
+    position: absolute;
+    bottom: 40px;
     left: 100px;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 .sci li {
@@ -146,7 +141,7 @@ header .navigation li a {
         position: relative;
         width: 30px;
         height: 30px;
-        background: url(/static/images/menu.png);
+        background: url(images/menu.png);
         background-size: 30px;
         background-repeat: no-repeat;
         background-position: center;
@@ -156,16 +151,71 @@ header .navigation li a {
     .toggle.active {
         position: fixed;
         right: 40px;
-        background: url(/static/images/close.png);
+        background: url(images/close.png);
         background-size: 25px;
         background-repeat: no-repeat;
         background-position: center;
     }
+    .subtotal {
+        width: 100%;
+    }
 }
 
-input {
-    color: #161616;
-    font-weight: bolder;
+.ordersTable {
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+.ordersTable tr {
+    height: 50px;
+}
+
+.subtotal {
+    float: right;
+    width: 35%;
+}
+
+.subtotal .totalRow {
+    padding: 0.5em;
+    text-align: right;
+}
+
+.subtotal .totalRow.final {
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.subtotal .totalRow span {
+    display: inline-block;
+    padding: 0 0 0 1em;
+    text-align: right;
+}
+
+.subtotal .totalRow .label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.subtotal .totalRow .value {
+    letter-spacing: -0.025em;
+    width: 35%;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
 }
 
 .cartIcon {

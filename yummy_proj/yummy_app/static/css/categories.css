@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-
 * {
     margin: 0;
     padding: 0;
@@ -77,7 +76,6 @@ header .navigation li a {
     align-items: center;
     flex-wrap: wrap;
     align-items: flex-end
-
 }
 
 .sci {
@@ -116,14 +114,12 @@ header .navigation li a {
     filter: invert(1);
 }
 
-
 .item p {
     margin-bottom: 3rem;
 }
 
 .item {
-    background: linear-gradient(
-            233deg, #615858, transparent);
+    background: linear-gradient( 233deg, #615858, transparent);
     width: 24%;
     margin: 15px;
     box-sizing: border-box;
@@ -170,7 +166,6 @@ header .navigation li a {
     margin: 0 auto;
     display: block;
     object-fit: cover;
-
 }
 
 .itemTitle {
@@ -211,34 +206,27 @@ header .navigation li a {
         flex-direction: column;
         justify-content: space-evenly;
     }
-
     .item {
         width: 100%;
         margin-left: 75%;
         margin: 25px 0 0 0;
     }
-
     header {
         padding: 40px;
     }
-
     section {
         padding: 150px 40px;
     }
-
     .sci {
         /*left: 5%;*/
         width: fit-content;
     }
-
     .content {
         flex-direction: column;
     }
-
     header .navigation {
         display: none;
     }
-
     header .navigation.active {
         position: fixed;
         top: 0;
@@ -252,13 +240,11 @@ header .navigation li a {
         align-items: center;
         z-index: 10;
     }
-
     .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
     }
-
     header .toggle {
         position: relative;
         width: 30px;
@@ -270,7 +256,6 @@ header .navigation li a {
         cursor: pointer;
         z-index: 10000;
     }
-
     .toggle.active {
         position: fixed;
         right: 40px;
@@ -303,7 +288,7 @@ header .navigation li a {
     background-clip: padding-box;
 }
 
-.ui-autocomplete > li > div {
+.ui-autocomplete>li>div {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -331,4 +316,9 @@ header .navigation li a {
     padding: 0;
     position: absolute;
     width: 1px;
+}
+
+.cartIcon {
+    width: 30px;
+    height: 30px;
 }

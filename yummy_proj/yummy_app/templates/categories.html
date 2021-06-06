@@ -3,161 +3,165 @@
 
 <head>
 
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <title>{{categoryName}}</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
     <!-- Load static -->
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/Categories.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/Categories.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 </head>
 
 
 <body>
-<section>
-    <div class="circle"></div>
-    <header>
-        <a href="/yummy"> <img src="{% static 'img/categories/logo.png' %}" class="logo"></a>
-        <div class="toggle" onclick="toggleMenu()">
-        </div>
-        <ul class="navigation">
-            <li>
-                <div class="ui-widget">
-                    <input type="search" id="tags" class="form-control" placeholder="Search..." aria-label="Search">
-                </div>
-            </li>
-
-            <li><a href="/yummy">Home</a></li>
-            <li class="dropdown">
-                <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                   data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
-                <ul class="dropdown-menu  bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item m-0" href="Fast Food">Fast Food</a></li>
-                    <li><a class="dropdown-item m-0" href="Pastries">Pastries</a></li>
-                    <li><a class="dropdown-item m-0" href="Traditional">Traditional</a></li>
-                    <li><a class="dropdown-item m-0" href="Desserts">Desserts</a></li>
-                    <li><a class="dropdown-item m-0" href="Drinks">Drinks</a></li>
-                    <li><a class="dropdown-item m-0" href="Salads">Salads</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Orders</a></li>
-            <li><a href="#">Contacts</a></li>
-            {% if request.session.loggedin %}
-            <li><a href="/logout">Logout</a></li>
-            {% else %}
-            <li><a href="/">Login</a></li>
-            {% endif %}
-        </ul>
-    </header>
-
-
-    <div class="itemsInColumn">
-        <div class="content">
-            {% for dish in All_Dishes %}
-            <div class="item">
-                <form action="info/info/{{dish.id}}" method="POST">
-                    {% csrf_token %}
-                    <input type="image" src="{{dish.image}}" width="300" height="300" class="itemPicture">
-                </form>
-                <h3 class="itemTitle">{{dish.name}}</h3>
-                <p class="itemDescription">{{dish.description}}</p>
-                <h6 class="itemPrice">₪{{dish.price}}</h6>
-                <form action="addToCart/{{dish.category.name}}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="dishToAdd" value="{{dish.id}}">
-                    <button class="buy-1">Add to cart</button>
-                </form>
+    <section>
+        <div class="circle"></div>
+        <header>
+            <a href="/yummy"> <img src="{% static 'img/categories/logo.png' %}" class="logo"></a>
+            <div class="toggle" onclick="toggleMenu()">
             </div>
-            {% endfor %}
+            <ul class="navigation">
+                <!-- ************************************************************************   
+                            EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
+                            ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
+                ************************************************************************ -->
+                <a href="/yummy/cart"><img src="{% static 'img/fullCart.ico' %}" alt="fullCart" class="cartIcon"></a>
+                <li>
+                    <div class="ui-widget">
+                        <input type="search" id="tags" class="form-control" placeholder="Search..." aria-label="Search">
+                    </div>
+                </li>
+
+                <li><a href="/yummy">Home</a></li>
+                <li class="dropdown">
+                    <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                    <ul class="dropdown-menu  bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item m-0" href="Fast Food">Fast Food</a></li>
+                        <li><a class="dropdown-item m-0" href="Pastries">Pastries</a></li>
+                        <li><a class="dropdown-item m-0" href="Traditional">Traditional</a></li>
+                        <li><a class="dropdown-item m-0" href="Desserts">Desserts</a></li>
+                        <li><a class="dropdown-item m-0" href="Drinks">Drinks</a></li>
+                        <li><a class="dropdown-item m-0" href="Salads">Salads</a></li>
+                    </ul>
+                </li>
+                <li><a href="/yummy/orders">Orders</a></li>
+                <li><a href="/yummy/contactus">Contacts</a></li>
+                {% if request.session.loggedin %}
+                <li><a href="/logout">Logout</a></li>
+                {% else %}
+                <li><a href="/">Login</a></li>
+                {% endif %}
+            </ul>
+        </header>
+
+
+        <div class="itemsInColumn">
+            <div class="content">
+                {% for dish in All_Dishes %}
+                <div class="item">
+                    <form action="/yummy/info/{{dish.id}}" method="POST">
+                        {% csrf_token %}
+                        <input type="image" src="{{dish.image}}" width="300" height="300" class="itemPicture">
+                    </form>
+                    <h3 class="itemTitle">{{dish.name}}</h3>
+                    <p class="itemDescription">{{dish.description}}</p>
+                    <h6 class="itemPrice">₪{{dish.price}}</h6>
+                    <!-- ************************************************************************   
+                            EDITED ACTION FOR THE FORM BELOW
+                    ************************************************************************ -->
+                    <form action="/yummy/addToCart/{{dish.category.name}}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="dishToAdd" value="{{dish.id}}">
+                        <button class="buy-1">Add to cart</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
 
-</section>
-
-<footer>
-    <ul class="sci">
+    </section>
+    <!-- ************************************************************************   
+                            REMOVED THE DUPLICATED FACEBOOK ICON 
+                            ADDED SOCIAL MEDIA URLS
+        ************************************************************************ -->
+    <footer>
         <ul class="sci">
-            <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
-            </li>
+            <ul class="sci">
+                <li>
+                    <a href="https://twitter.com/"><img src="{% static 'img/categories/twitter.png' %}" /></a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/"><img src="{% static 'img/categories/instagram.png' %}" /></a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/"><img src="{% static 'img/categories/facebook.png' %}" /></a>
+                </li>
+            </ul>
         </ul>
-    </ul>
-</footer>
-<script>
-    function toggleMenu() {
-        const menuToggle = document.querySelector(".toggle");
-        const navigation = document.querySelector(".navigation");
-        menuToggle.classList.toggle("active");
-        navigation.classList.toggle("active");
-    }
-</script>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const menuToggle = document.querySelector(".toggle");
+            const navigation = document.querySelector(".navigation");
+            menuToggle.classList.toggle("active");
+            navigation.classList.toggle("active");
+        }
+    </script>
 
-<script>
-    $(function () {
-        var availableTags = JSON.parse('{{ namelist|safe }}');
-        $("#tags").autocomplete({
-            source: availableTags
+    <script>
+        $(function() {
+            var availableTags = JSON.parse('{{ namelist|safe }}');
+            $("#tags").autocomplete({
+                source: availableTags
+            });
         });
-    });
 
 
-    $(":input").bind('keyup change click', function (e) {
-        m = $(this)
-        if (!$(this).data("previousValue") ||
-            $(this).data("previousValue") != $(this).val()
-        ) {
-            $(this).data("previousValue", $(this).val());
-            phrase = m.val()
-            if (phrase != '') {
-                $.ajax({
-                    url: 'search/' + phrase,
-                    method: 'get',
-                    data: {
-                        phrase: phrase, // will be accessible in $_get['phrase']
-                        category: '{{categoryName}}'
-                    },
-                    success: function (serverResponse) {
-                        // Replace the html inside a div with the class "posts" with the server response
-                        $(document).find('.itemsInColumn').html(serverResponse)
-                    }
-                });
-            } else {
-                $.ajax({
-                    url: 'searchreset/',
-                    method: 'get',
-                    data: {
-                        category: '{{categoryName}}'
-                    },
-                    success: function (serverResponse) {
-                        // Replace the html inside a div with the class "posts" with the server response
-                        $(document).find('.itemsInColumn').html(serverResponse)
-                    }
-                });
+        $(":input").bind('keyup change click', function(e) {
+            m = $(this)
+            if (!$(this).data("previousValue") ||
+                $(this).data("previousValue") != $(this).val()
+            ) {
+                $(this).data("previousValue", $(this).val());
+                phrase = m.val()
+                if (phrase != '') {
+                    $.ajax({
+                        url: 'search/' + phrase,
+                        method: 'get',
+                        data: {
+                            phrase: phrase, // will be accessible in $_get['phrase']
+                            category: '{{categoryName}}'
+                        },
+                        success: function(serverResponse) {
+                            // Replace the html inside a div with the class "posts" with the server response
+                            $(document).find('.itemsInColumn').html(serverResponse)
+                        }
+                    });
+                } else {
+                    $.ajax({
+                        url: 'searchreset/',
+                        method: 'get',
+                        data: {
+                            category: '{{categoryName}}'
+                        },
+                        success: function(serverResponse) {
+                            // Replace the html inside a div with the class "posts" with the server response
+                            $(document).find('.itemsInColumn').html(serverResponse)
+                        }
+                    });
+                }
+
             }
 
-        }
-
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossOrigin="anonymous">
-</script>
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossOrigin="anonymous">
+    </script>
 
 </body>
 
