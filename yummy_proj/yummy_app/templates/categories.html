@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="UTF-8"/>
-    <title>{{categoryName}}</title>
+    <title>{{ categoryName }}</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css"/>
     <!-- Load static -->
     {% load static %}
@@ -27,6 +27,10 @@
         <div class="toggle" onclick="toggleMenu()">
         </div>
         <ul class="navigation">
+            <!-- ************************************************************************
+                        EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
+                        ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
+            ************************************************************************ -->
             <li>
                 <div class="ui-widget">
                     <input type="search" id="tags" class="form-control" placeholder="Search..." aria-label="Search">
@@ -46,12 +50,16 @@
                     <li><a class="dropdown-item m-0" href="Salads">Salads</a></li>
                 </ul>
             </li>
-            <li><a href="#">Orders</a></li>
-            <li><a href="#">Contacts</a></li>
+            <a style="text-decoration: none; color: white;" href="/yummy/cart"><img width="30" height="30"
+                                                                                    src="{% static 'img/fullCart.png' %}"
+                                                                                    alt="fullCart" class="cartIcon">
+                Cart</a>
+            <li><a href="/yummy/orders">Orders</a></li>
+            <li><a href="/yummy/contactus">Contacts</a></li>
             {% if request.session.loggedin %}
-            <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout">Hello {{ request.session.username }}, Logout</a></li>
             {% else %}
-            <li><a href="/">Login</a></li>
+                <li><a href="/">Login</a></li>
             {% endif %}
         </ul>
     </header>
@@ -60,40 +68,43 @@
     <div class="itemsInColumn">
         <div class="content">
             {% for dish in All_Dishes %}
-            <div class="item">
-                <form action="info/info/{{dish.id}}" method="POST">
-                    {% csrf_token %}
-                    <input type="image" src="{{dish.image}}" width="300" height="300" class="itemPicture">
-                </form>
-                <h3 class="itemTitle">{{dish.name}}</h3>
-                <p class="itemDescription">{{dish.description}}</p>
-                <h6 class="itemPrice">₪{{dish.price}}</h6>
-                <form action="addToCart/{{dish.category.name}}" method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="dishToAdd" value="{{dish.id}}">
-                    <button class="buy-1">Add to cart</button>
-                </form>
-            </div>
+                <div class="item">
+                    <form action="/yummy/info/{{ dish.id }}" method="POST">
+                        {% csrf_token %}
+                        <input type="image" src="{{ dish.image }}" width="300" height="300" class="itemPicture">
+                    </form>
+                    <h3 class="itemTitle">{{ dish.name }}</h3>
+                    <p class="itemDescription">{{ dish.description }}</p>
+                    <h6 class="itemPrice">₪{{ dish.price }}</h6>
+                    <!-- ************************************************************************   
+                            EDITED ACTION FOR THE FORM BELOW
+                    ************************************************************************ -->
+                    <form action="/yummy/addToCart/{{ dish.category.name }}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="dishToAdd" value="{{ dish.id }}">
+                        <button class="buy-1">Add to cart</button>
+                    </form>
+                </div>
             {% endfor %}
         </div>
     </div>
 
 </section>
-
+<!-- ************************************************************************
+                        REMOVED THE DUPLICATED FACEBOOK ICON
+                        ADDED SOCIAL MEDIA URLS
+    ************************************************************************ -->
 <footer>
     <ul class="sci">
         <ul class="sci">
             <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+                <a href="https://twitter.com/"><img src="{% static 'img/categories/twitter.png' %}"/></a>
             </li>
             <li>
-                <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
+                <a href="https://www.instagram.com/"><img src="{% static 'img/categories/instagram.png' %}"/></a>
             </li>
             <li>
-                <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+                <a href="https://www.facebook.com/"><img src="{% static 'img/categories/facebook.png' %}"/></a>
             </li>
         </ul>
     </ul>
@@ -125,7 +136,7 @@
             phrase = m.val()
             if (phrase != '') {
                 $.ajax({
-                    url: 'search/' + phrase,
+                    url: '/yummy/search/' + phrase,
                     method: 'get',
                     data: {
                         phrase: phrase, // will be accessible in $_get['phrase']
@@ -138,7 +149,7 @@
                 });
             } else {
                 $.ajax({
-                    url: 'searchreset/',
+                    url: '/yummy/searchreset/',
                     method: 'get',
                     data: {
                         category: '{{categoryName}}'
@@ -155,8 +166,7 @@
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossOrigin="anonymous">
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossOrigin="anonymous">
 </script>
 
 </body>

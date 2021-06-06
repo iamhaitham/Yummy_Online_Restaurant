@@ -13,14 +13,12 @@ section {
     min-height: 100vh;
     padding: 100px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     background: #161616;
-    flex-direction: column;
 }
 
 section .circle {
-    z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
@@ -168,53 +166,67 @@ header .navigation li a {
         background-repeat: no-repeat;
         background-position: center;
     }
+
+    .subtotal {
+        width: 100%;
+    }
 }
 
-.text-primary {
-    margin-top: -500px;
-    margin-left: -80px;
-    color: blue;
-}
-
-.text-primary1 {
-    margin-left: 60px;
-    margin-top: -200px;
-    color: white;
+.ordersTable {
+    margin-left: 10%;
+    margin-right: 10%;
     text-align: center;
 }
 
-.text-primary2 {
-    margin-right: 10px;
-    margin-top: 0px;
-    margin-left: 10px;
-    color: white;
-    text-align: center;
+.ordersTable tr {
+    height: 50px;
 }
 
-.text-primary3 {
-    margin-right: 10px;
+.subtotal {
+    float: right;
+    width: 35%;
 }
 
-.text-primary0 {
-    margin-left: 60px;
-    margin-top: -80px;
-    color: white;
+.subtotal .totalRow {
+    padding: 0.5em;
+    text-align: right;
 }
 
-.text-primary4 {
-    color: white;
-    margin-top: 30px;
-    margin-left: 40px;
+.subtotal .totalRow.final {
+    font-size: 1.25em;
+    font-weight: bold;
 }
 
-.text-primary5 {
-    color: white;
-    margin-left: 0px;
+.subtotal .totalRow span {
+    display: inline-block;
+    padding: 0 0 0 1em;
+    text-align: right;
 }
 
-.text-primary6 {
-    color: white;
-    margin-left: 0px;
+.subtotal .totalRow .label {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.subtotal .totalRow .value {
+    letter-spacing: -0.025em;
+    width: 35%;
+}
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
 }
 
 .cartIcon {
@@ -222,4 +234,5 @@ header .navigation li a {
     height: 30px;
     padding-left: 7px;
     margin-left: 10px;
+
 }

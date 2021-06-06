@@ -20,25 +20,33 @@
         <div class="toggle" onclick="toggleMenu()">
         </div>
         <ul class="navigation">
+            <!-- ************************************************************************
+                        EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
+                        ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
+            ************************************************************************ -->
             <li><a href="/yummy">Home</a></li>
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                 <ul class="dropdown-menu  bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item m-0" href="Fast Food">Fast Food</a></li>
-                    <li><a class="dropdown-item m-0" href="Pastries">Pastries</a></li>
-                    <li><a class="dropdown-item m-0" href="Traditional">Traditional</a></li>
-                    <li><a class="dropdown-item m-0" href="Desserts">Desserts</a></li>
-                    <li><a class="dropdown-item m-0" href="Drinks">Drinks</a></li>
-                    <li><a class="dropdown-item m-0" href="Salads">Salads</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Fast Food">Fast Food</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Pastries">Pastries</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Traditional">Traditional</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Desserts">Desserts</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Drinks">Drinks</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Salads">Salads</a></li>
                 </ul>
             </li>
-            <li><a href="#">Orders</a></li>
-            <li><a href="#">Contacts</a></li>
+            <a style="text-decoration: none; color: white;" href="/yummy/cart"><img width="30" height="30"
+                                                                                    src="{% static 'img/fullCart.png' %}"
+                                                                                    alt="fullCart" class="cartIcon">
+                Cart</a>
+            <li><a href="/yummy/orders">Orders</a></li>
+            <li><a href="/yummy/contactus">Contacts</a></li>
             {% if request.session.loggedin %}
-            <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout">Hello {{ request.session.username }}, Logout</a></li>
             {% else %}
-            <li><a href="/">Login</a></li>
+                <li><a href="/">Login</a></li>
             {% endif %}
         </ul>
     </header>
@@ -50,49 +58,52 @@
             <p>We offer breakfast and lunch made to order all day and are focused on providing quality service and fresh
                 food, with a smile. We are a small staff and regulars become family. We’d love to get to know you
                 better! See you soon, at the shop!</p>
-            <a href="#">Learn More</a>
+            <a href="yummy/contactus">Learn More</a>
         </div>
 
         <div class="imgBox">
+            <!-- ************************************************************************
+                        EDITED ROUTES THAT EACH PICTURE IN THE SWIPER REDIRECTS TO
+            ************************************************************************ -->
             <div class="swiper-container mySwiper swiper-container-coverflow swiper-container-3d swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events"
                  style="cursor: grab;">
                 <div class="swiper-wrapper" id="swiper-wrapper-1a286acdc88af937" aria-live="polite"
                      style="transition-duration: 0ms; transform: translate3d(-871px, 0px, 0px);">
                     <div class="swiper-slide" role="group" aria-label="1 / 6"
                          style="transition-duration: 0ms; transform: translate3d(0px, 0px, -400px) rotateX(0deg) rotateY(200deg) scale(1); z-index: -3;">
-                        <a href="Fast Food"><img src="{% static 'img/homepage/fastfood.png' %}"></a>
+                        <a href="/yummy/catalog/Fast Food"><img src="{% static 'img/homepage/fastfood.png' %}"></a>
                         <div class="swiper-slide-shadow-left" style="opacity: 4; transition-duration: 0ms;"></div>
                         <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                     </div>
                     <div class="swiper-slide" role="group" aria-label="2 / 6"
                          style="transition-duration: 0ms; transform: translate3d(0px, 0px, -300px) rotateX(0deg) rotateY(150deg) scale(1); z-index: -2;">
-                        <a href="Salads"><img src="{% static 'img/homepage/salad.png' %}"></a>
+                        <a href="/yummy/catalog/Salads"><img src="{% static 'img/homepage/salad.png' %}"></a>
 
                         <div class="swiper-slide-shadow-left" style="opacity: 3; transition-duration: 0ms;"></div>
                         <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                     </div>
                     <div class="swiper-slide" role="group" aria-label="3 / 6"
                          style="transition-duration: 0ms; transform: translate3d(0px, 0px, -200px) rotateX(0deg) rotateY(100deg) scale(1); z-index: -1;">
-                        <a href="Drinks"><img src="{% static 'img/homepage/cocacola3.png' %}"></a>
+                        <a href="/yummy/catalog/Drinks"><img src="{% static 'img/homepage/cocacola3.png' %}"></a>
                         <div class="swiper-slide-shadow-left" style="opacity: 2; transition-duration: 0ms;"></div>
                         <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                     </div>
 
                     <div class="swiper-slide swiper-slide-active" role="group" aria-label="4 / 6"
                          style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1); z-index: 1;">
-                        <a href="Desserts"><img src="{% static 'img/homepage/desserts.png' %}"></a>
+                        <a href="/yummy/catalog/Desserts"><img src="{% static 'img/homepage/desserts.png' %}"></a>
                         <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div>
                         <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                     </div>
                     <div class="swiper-slide swiper-slide-prev" role="group" aria-label="5 / 6"
                          style="transition-duration: 0ms; transform: translate3d(0px, 0px, -100px) rotateX(0deg) rotateY(50deg) scale(1); z-index: 0;">
-                        <a href="Traditional"><img src="{% static 'img/homepage/traditional.png' %}"></a>
+                        <a href="/yummy/catalog/Traditional"><img src="{% static 'img/homepage/traditional.png' %}"></a>
                         <div class="swiper-slide-shadow-left" style="opacity: 1; transition-duration: 0ms;"></div>
                         <div class="swiper-slide-shadow-right" style="opacity: 0; transition-duration: 0ms;"></div>
                     </div>
                     <div class="swiper-slide swiper-slide-next" role="group" aria-label="6 / 6"
                          style="transition-duration: 0ms; transform: translate3d(0px, 0px, -100px) rotateX(0deg) rotateY(-50deg) scale(1); z-index: -0;">
-                        <a href="Pastries"><img src="{% static 'img/homepage/pastries.png' %}"></a>
+                        <a href="/yummy/catalog/Pastries"><img src="{% static 'img/homepage/pastries.png' %}"></a>
                         <!--                        <div class="swiper-slide-shadow-left" style="opacity: 0; transition-duration: 0ms;"></div>-->
                         <!--                        <div class="swiper-slide-shadow-right" style="opacity: 1; transition-duration: 0ms;"></div>-->
                     </div>
@@ -100,20 +111,20 @@
             </div>
         </div>
     </div>
-
+    <!-- ************************************************************************
+                        REMOVED THE DUPLICATED FACEBOOK ICON
+                        ADDED SOCIAL MEDIA URLS
+    ************************************************************************ -->
     <ul class="sci">
         <ul class="sci">
             <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+                <a href="https://twitter.com/"><img src="{% static 'img/categories/twitter.png' %}"/></a>
             </li>
             <li>
-                <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
+                <a href="https://www.instagram.com/"><img src="{% static 'img/categories/instagram.png' %}"/></a>
             </li>
             <li>
-                <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
-            </li>
-            <li>
-                <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+                <a href="https://www.facebook.com/"><img src="{% static 'img/categories/facebook.png' %}"/></a>
             </li>
         </ul>
     </ul>
@@ -134,7 +145,8 @@
             depth: 300,
             modifier: 1,
             slideShadows: false,
-        }, mousewheel: {
+        },
+        mousewheel: {
             invert: true,
         },
         pagination: {
@@ -151,9 +163,9 @@
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossOrigin="anonymous">
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossOrigin="anonymous">
 </script>
 
 </body>
+
 </html>

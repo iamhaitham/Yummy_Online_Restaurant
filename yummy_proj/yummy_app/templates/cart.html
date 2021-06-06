@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8"/>
     <title>Cart</title>
@@ -13,6 +14,7 @@
           integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="{% static 'js/cartjs.js' %}"></script>
 </head>
+
 <body>
 <section>
     <div class="circle"></div>
@@ -21,25 +23,33 @@
         <div class="toggle" onclick="toggleMenu()">
         </div>
         <ul class="navigation">
+            <!-- ************************************************************************
+                        EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
+                        ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
+            ************************************************************************ -->
             <li><a href="/yummy">Home</a></li>
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                 <ul class="dropdown-menu  bg-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item m-0" href="Fast Food">Fast Food</a></li>
-                    <li><a class="dropdown-item m-0" href="Pastries">Pastries</a></li>
-                    <li><a class="dropdown-item m-0" href="Traditional">Traditional</a></li>
-                    <li><a class="dropdown-item m-0" href="Desserts">Desserts</a></li>
-                    <li><a class="dropdown-item m-0" href="Drinks">Drinks</a></li>
-                    <li><a class="dropdown-item m-0" href="Salads">Salads</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Fast Food">Fast Food</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Pastries">Pastries</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Traditional">Traditional</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Desserts">Desserts</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Drinks">Drinks</a></li>
+                    <li><a class="dropdown-item m-0" href="/yummy/catalog/Salads">Salads</a></li>
                 </ul>
             </li>
-            <li><a href="#">Orders</a></li>
-            <li><a href="#">Contacts</a></li>
+            <a style="text-decoration: none; color: white;" href="/yummy/cart"><img width="30" height="30"
+                                                                                    src="{% static 'img/fullCart.png' %}"
+                                                                                    alt="fullCart" class="cartIcon">
+                Cart</a>
+            <li><a href="/yummy/orders">Orders</a></li>
+            <li><a href="/yummy/contactus">Contacts</a></li>
             {% if request.session.loggedin %}
-            <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout">Hello {{ request.session.username }}, Logout</a></li>
             {% else %}
-            <li><a href="/">Login</a></li>
+                <li><a href="/">Login</a></li>
             {% endif %}
         </ul>
     </header>
@@ -55,45 +65,39 @@
             </div>
             <div class="cart">
                 <ul class="cartWrap">
-                    {% load mathfilters %}
-                    {% for item in items %}
-                    {% if forloop.counter|divisibleby:2 %}
+                    {% load mathfilters %} {% for item in items %} {% if forloop.counter|divisibleby:2 %}
                     <li class="items even">
                         {% else %}
                     <li class="items odd">
-                        {% endif %}
-                        <div class="infoWrap">
-                            <div class="cartSection">
-                                <img
-                                        src="{{item.0.image}}"
-                                        alt=""
-                                        class="itemImg"
-                                />
-                                <p id="itemid" class="itemNumber">ID#{{ item.0.id }}</p>
-                                <h3>{{item.0.name}}</h3>
+                {% endif %}
+                <div class="infoWrap">
+                    <div class="cartSection">
+                        <img src="{{ item.0.image }}" alt="" class="itemImg"/>
+                        <p id="itemid" class="itemNumber">ID#{{ item.0.id }}</p>
+                        <h3>{{ item.0.name }}</h3>
 
-                                <p><input id="qty" type="number" min=1 class="qty" value={{item.1}} placeholder="1"/> x
-                                    <span class="myprice">{{item.0.price}}₪</span>
-                                </p>
+                        <p><input id="qty" type="number" min=1 class="qty" value={{ item.1 }} placeholder="1"/> x
+                            <span class="myprice">{{ item.0.price }}₪</span>
+                        </p>
 
-                                <p class="stockStatus">In Stock</p>
-                            </div>
+                        <p class="stockStatus">In Stock</p>
+                    </div>
 
-                            <div class="prodTotal cartSection">
-                                <p id="itemprice">₪{{ item.0.price|mul:item.1 }}</p>
-                            </div>
-                            <div class="cartSection removeWrap">
-                                <a href="" class="remove">x</a>
-                            </div>
-                        </div>
-                    </li>
-                    {% endfor %}
+                    <div class="prodTotal cartSection">
+                        <p id="itemprice">₪{{ item.0.price|mul:item.1 }}</p>
+                    </div>
+                    <div class="cartSection removeWrap">
+                        <a href="" class="remove">x</a>
+                    </div>
+                </div>
+                </li>
+                {% endfor %}
                 </ul>
             </div>
             <div class="subtotal cf">
                 <ul>
                     <li class="totalRow">
-                        <span class="label">Subtotal</span><span class="value">₪{{totalprice}}</span>
+                        <span class="label">Subtotal</span><span class="value">₪{{ totalprice }}</span>
                     </li>
 
                     <li class="totalRow">
@@ -103,7 +107,10 @@
                         <span class="label">Total</span><span class="value">₪{{ totalprice|add:5 }}</span>
                     </li>
                     <li class="totalRow">
-                        <a href="#" class="btn continue">Checkout</a>
+                        <!-- ************************************************************************
+                        EDITED HREF FOR CHECKOUT
+                        ************************************************************************ -->
+                        <a href="/yummy/orders" class="btn continue">Checkout</a>
                     </li>
                 </ul>
             </div>
@@ -113,18 +120,19 @@
 </section>
 
 <footer>
+    <!-- ************************************************************************
+                        REMOVED THE DUPLICATED FACEBOOK ICON
+                        ADDED SOCIAL MEDIA URLS
+    ************************************************************************ -->
     <ul class="sci">
         <li>
-            <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+            <a href="https://twitter.com/"><img src="{% static 'img/categories/twitter.png' %}"/></a>
         </li>
         <li>
-            <a href="#"><img src="{% static 'img/categories/twitter.png' %}"/></a>
+            <a href="https://www.instagram.com/"><img src="{% static 'img/categories/instagram.png' %}"/></a>
         </li>
         <li>
-            <a href="#"><img src="{% static 'img/categories/instagram.png' %}"/></a>
-        </li>
-        <li>
-            <a href="#"><img src="{% static 'img/categories/facebook.png' %}"/></a>
+            <a href="https://www.facebook.com/"><img src="{% static 'img/categories/facebook.png' %}"/></a>
         </li>
     </ul>
 </footer>
@@ -137,9 +145,10 @@
         navigation.classList.toggle("active");
     }
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossOrigin="anonymous">
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossOrigin="anonymous">
 </script>
 </body>
+
 </html>

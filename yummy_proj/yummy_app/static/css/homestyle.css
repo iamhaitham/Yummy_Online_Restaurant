@@ -19,13 +19,13 @@ section {
 }
 
 section .circle {
-
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #9bdead;  /* Colors HERE-------------------------  */
+    background: #9bdead;
+    /* Colors HERE-------------------------  */
     clip-path: circle(70% at right -20%);
 }
 
@@ -48,6 +48,7 @@ header .logo {
 header .navigation {
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 header .navigation li {
@@ -55,13 +56,11 @@ header .navigation li {
 }
 
 header .navigation li a {
-
     text-decoration: none;
     display: inline-block;
     color: #fff;
     font-weight: 500;
     margin-left: 40px;
-
 }
 
 .content {
@@ -70,7 +69,6 @@ header .navigation li a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .content .textBox {
@@ -85,7 +83,6 @@ header .navigation li a {
     margin-bottom: 10px;
     line-height: 1.4em;
     font-weight: 700;
-
 }
 
 .content .textBox p {
@@ -102,7 +99,6 @@ header .navigation li a {
     font-weight: 500;
     letter-spacing: 1px;
     text-decoration: none;
-
 }
 
 .sci {
@@ -138,8 +134,8 @@ header .navigation li a {
 
 .sci li a img {
     filter: invert(1);
-
 }
+
 
 /*slider*/
 
@@ -157,7 +153,6 @@ header .navigation li a {
     display: flex;
     justify-content: center;
 }
-
 
 .content .imgBox {
     width: 600px;
@@ -197,7 +192,8 @@ header .navigation li a {
         flex-direction: column;
     }
 
-    .content .textBox, .content .img box {
+    .content .textBox,
+    .content .img box {
         max-width: 100%;
     }
 
@@ -223,7 +219,7 @@ header .navigation li a {
         z-index: 10;
     }
 
-    .navigation.active li a{
+    .navigation.active li a {
         margin: 10px 0;
         font-size: 1.5em;
         font-weight: 300;
@@ -248,8 +244,12 @@ header .navigation li a {
         background-size: 25px;
         background-repeat: no-repeat;
         background-position: center;
-
     }
+}
 
-
+.cartIcon {
+    width: 30px;
+    height: 30px;
+    padding-left: 7px;
+    margin-left: 10px;
 }
