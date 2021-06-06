@@ -32,6 +32,7 @@ def login(request):
             password = request.POST['loginpwd']
         if user is not None and bcrypt.checkpw(password.encode(), user.password.encode()):
             request.session['id'] = user.id
+            request.session['username'] = user.username
             request.session['loggedin'] = True
             return redirect('/welcome')
         else:
@@ -57,6 +58,7 @@ def register(request):
                 hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
                 user = models.create_user(username, phone_number=phone, city="berzeit", password=hashed_password)
                 request.session['id'] = user.id
+                request.session['username'] = user.username
                 request.session['loggedin'] = True
                 return redirect('/welcome')
     return redirect('/')

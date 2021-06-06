@@ -44,7 +44,6 @@
                             EDITED URLS THAT EACH LINK IN THE NAVBAR DIRECTS TO
                             ADDED CART ICON THAT REDIRECTS TO THE CART ROUTE
                 ************************************************************************ -->
-                <a href="/yummy/cart"><img src="{% static 'img/fullCart.ico' %}" alt="fullCart" class="cartIcon"></a>
                 <li><a href="/yummy">Home</a></li>
                 <li class="dropdown">
                     <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDarkDropdownMenuLink" role="button"
@@ -65,7 +64,7 @@
                 <li><a href="/yummy/orders">Orders</a></li>
                 <li><a href="/yummy/contactus">Contacts</a></li>
                 {% if request.session.loggedin %}
-                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/logout">Hello {{ request.session.username }}, Logout</a></li>
                 {% else %}
                     <li><a href="/">Login</a></li>
                 {% endif %}

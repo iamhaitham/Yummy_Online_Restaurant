@@ -52,7 +52,7 @@
             <li><a href="/yummy/orders">Orders</a></li>
             <li><a href="/yummy/contactus">Contacts</a></li>
             {% if request.session.loggedin %}
-                <li><a href="/logout">Logout</a></li>
+                <li><a href="/logout">Hello {{ request.session.username }}, Logout</a></li>
             {% else %}
                 <li><a href="/">Login</a></li>
             {% endif %}
