@@ -78,8 +78,10 @@
                             {% csrf_token %}
                             <input type="hidden" name="dishToAdd" value="{{ dish.id }}">
                             <input class="form-control text-center me-3" id="inputQuantity" name=qty type="number"
+                                   min="1"
                                    value="1" style="max-width: 4rem"/>
-                            <button type="submit" class="btn btn-outline-dark flex-shrink-0 whitecolor"
+                            <button type="submit" class="btn btn-outline-dark flex-shrink-0"
+                                    style="color: #f9f9fd"
                                     value='Add to cart'><i class="bi-cart-fill me-1"></i>Add to cart
                             </button>
                             <!--                            <input type="submit" class="btn btn-outline-dark flex-shrink-0 whitecolor" value='Add to cart'>-->
