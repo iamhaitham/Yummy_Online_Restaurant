@@ -59,43 +59,65 @@
         </ul>
     </header>
 
-    <div class="content">
-        <table class="table  table-hover ordersTable">
-            <thead class="table-dark">
-            <th>Dish</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total Price</th>
-            </thead>
-            <tbody class="table-light">
-            {% load mathfilters %} {% for item in items %}
-                <tr>
-                    <td>{{ item.0.name }}</td>
-                    <td>{{ item.1 }}</td>
-                    <td>{{ item.0.price }}</td>
-                    <td>₪{{ item.2 }}</td>
-                </tr>
-            {% endfor %}
-            <tr>
-                <td>Subtotal</td>
-                <td></td>
-                <td></td>
-                <td>₪{{ totalprice }}</td>
-            </tr>
-            <tr>
-                <td>Shipping</td>
-                <td></td>
-                <td></td>
-                <td>₪5.0</td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td></td>
-                <td></td>
-                <td>₪{{ totalprice|add:5}}.0</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="content d-flex flex-column">
+        <h1 style="color:white;">Orders</h1>
+        <div class="accordion w-100" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Order #1
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse hide" aria-labelledby="headingOne"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body p-0 m-0">
+                        <table class="table  table-hover ">
+                            <thead class="table-dark">
+                            <th>Dish</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Total Price</th>
+                            </thead>
+                            <tbody class="table-light">
+                            {% load mathfilters %} {% for item in items %}
+                                <tr>
+                                    <td>{{ item.0.name }}</td>
+                                    <td>{{ item.1 }}</td>
+                                    <td>{{ item.0.price }}</td>
+                                    <td>₪{{ item.2 }}</td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td>Subtotal</td>
+                                <td></td>
+                                <td></td>
+                                <td>₪{{ totalprice }}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping</td>
+                                <td></td>
+                                <td></td>
+                                <td>₪5.0</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td></td>
+                                <td></td>
+                                <td>₪{{ totalprice|add:5}}.0</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td></td>
+                                <td></td>
+                                <td><p>Awaiting Confirmation <a href="/login" class="btn btn-dark">Confirm</a></p></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </section>
