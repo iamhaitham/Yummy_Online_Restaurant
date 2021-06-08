@@ -5,6 +5,8 @@
 
 ```python manage.py runserver``` then navigate to  [127.0.0.1:8000](https://localhost:8080).
 
+## For Deployment Using Heruko Read [Heruko](https://devcenter.heroku.com/articles/getting-started-with-python)
+
 ## **Abstract:**
 #### *Our project is a website for an online restaurant that will make it easy for the customer to navigate through different dishes that are offered.The websites navbar contains Home, Order, Cart, Categories, About, and Contact.The user has the ability to choose between a slider and a navigation bar to pickthe desried category, after picking a category, the user can view all our dishesthat are in the category. The user can add items to the cart if they log in.They will also have the chance to review their orders before purchasing the items in the cart,and they also have the chance to delete any undesired item. All the pages in our website aregoing to be responsive.*
 
