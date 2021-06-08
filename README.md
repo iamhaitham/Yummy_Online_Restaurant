@@ -1,10 +1,10 @@
 #**Yummy Online Resturant** 
 
-##**Abstract:**
-####*Our project is a website for an online restaurant that will make it easy for the customer to navigate through different dishes that are offered.The websites navbar contains Home, Order, Cart, Categories, About, and Contact.The user has the ability to choose between a slider and a navigation bar to pickthe desried category, after picking a category, the user can view all our dishesthat are in the category. The user can add items to the cart if they log in.They will also have the chance to review their orders before purchasing the items in the cart,and they also have the chance to delete any undesired item. All the pages in our website aregoing to be responsive.*
+## **Abstract:**
+#### *Our project is a website for an online restaurant that will make it easy for the customer to navigate through different dishes that are offered.The websites navbar contains Home, Order, Cart, Categories, About, and Contact.The user has the ability to choose between a slider and a navigation bar to pickthe desried category, after picking a category, the user can view all our dishesthat are in the category. The user can add items to the cart if they log in.They will also have the chance to review their orders before purchasing the items in the cart,and they also have the chance to delete any undesired item. All the pages in our website aregoing to be responsive.*
 
-###Main Functionalities:
-####Home Page
+### Main Functionalities:
+#### Home Page
 *   Features
     *	Home page have a slider that displays the food categories our restaurant serves
     *   Categories slider navigate to that category if clicked
