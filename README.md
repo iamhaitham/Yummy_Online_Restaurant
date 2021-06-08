@@ -1,5 +1,7 @@
 # **Yummy Online Resturant** 
 
+[![Development Status](https://github.com/socketry/localhost/workflows/Development/badge.svg)](https://github.com/socketry/localhost/actions?workflow=Development
+
 ## Run 
 
 ```python manage.py runserver``` then navigate to  [127.0.0.1:8000](https://localhost:8080).
