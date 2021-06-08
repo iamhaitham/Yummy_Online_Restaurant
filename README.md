@@ -1,6 +1,5 @@
 # **Yummy Online Resturant** 
 
-[![Development Status]
 
 ## Run 
 
