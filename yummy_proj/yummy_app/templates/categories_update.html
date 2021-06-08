@@ -1,7 +1,7 @@
 <div class="content">
     {% for dish in All_Dishes %}
     <div class="item">
-        <form action="info/info/{{dish.id}}" method="POST">
+        <form action="/yummy/info/{{dish.id}}" method="POST">
             {% csrf_token %}
             <input type="image" src="{{dish.image}}" class="itemPicture">
         </form>
