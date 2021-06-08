@@ -28,7 +28,7 @@
     *	Passwords are encrypted
     *	Fields validation are implemented using Ajax, validations are done in real time
     *	User information are saved in session, so they don’t need to log in again
-    *   User will be able to login:
+    * User will be able to login:
     *	User is only able to login with a valid password and phone combination
     *	User should be saved in session when registered successfully
   ###Login/Register Preview
@@ -36,13 +36,13 @@
   
 ###Category/Dishes page:
 * Features
-    *	   The category page can be viewed when a user clicks on a category
-    *	   The category  page include price information and a link to each dish in the selected category
-    *	   Dishes have a button to be added to cart
-    *	   If you click on a dish more information and details will be demonstrated, you will also be able to choose the quantity desired 
-    *	   Dishes are searchable from a search bar using Ajax
-    *	   Dishes page should be responsive
-    *	   Dishes page have a back button
+    *The category page can be viewed when a user clicks on a category
+    *The category  page include price information and a link to each dish in the selected category
+    *Dishes have a button to be added to cart
+    *If you click on a dish more information and details will be demonstrated, you will also be able to choose the quantity desired 
+    *Dishes are searchable from a search bar using Ajax
+    *Dishes page should be responsive
+    *Dishes page have a back button
     
   ###Dishes Catalogue Preview
   ![2](https://user-images.githubusercontent.com/81506382/120929394-8f634e00-c6f1-11eb-92aa-da8e00859f6b.PNG)
