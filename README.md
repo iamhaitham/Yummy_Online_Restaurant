@@ -55,6 +55,10 @@
   ### Dishes Catalogue Preview
   ![2](https://user-images.githubusercontent.com/81506382/120929394-8f634e00-c6f1-11eb-92aa-da8e00859f6b.PNG)
 
+## Some Technologies Used
+![Technologies](https://user-images.githubusercontent.com/75543501/121818529-7417b600-cc90-11eb-97b0-59ebfe43f47c.png)
+
+
 ## Authors:
 1. Haitham   Abbas 
 2. Haitham   Estetieh  
