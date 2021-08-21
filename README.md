@@ -1,4 +1,4 @@
-# **Yummy Online Resturant** 
+# **Yummy Online Restaurant** 
 
 
 ## Run 
