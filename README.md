@@ -1,9 +1,13 @@
 # **Yummy Online Resturant** 
 
 
-## Run 
+## Run Localy
 
 ```python manage.py runserver``` then navigate to  [127.0.0.1:8000](https://localhost:8080).
+
+## Run Using Docker
+
+```docker-compose up``` then navigate to  [127.0.0.1:8000](https://localhost:8080).
 
 ## For Deployment Using Heruko Read 
 [Heruko How To Django](https://devcenter.heroku.com/articles/getting-started-with-python)
